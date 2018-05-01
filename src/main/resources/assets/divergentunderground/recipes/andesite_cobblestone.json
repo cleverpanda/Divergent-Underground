@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "divergentunderground:andesite_cobblestone",
+	"count": 1
+  },
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "P": {
+      "item": "divergentunderground:rock_andesite"
+    }
+  }
+}

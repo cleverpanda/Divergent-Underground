@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "minecraft:sandstone",
+	"count": 1,
+    "data": 0
+  },
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "P": {
+      "item": "divergentunderground:rock_sandstone"
+    }
+  }
+}

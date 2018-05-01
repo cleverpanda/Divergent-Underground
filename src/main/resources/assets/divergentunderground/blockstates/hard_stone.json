@@ -1,0 +1,35 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+        "textures": {
+          "all": "blocks/stone"
+        }
+	},
+    "variants": {
+			"hardness=0": [
+            { "model": "divergentunderground:cube_all" },
+            { "model": "divergentunderground:cube_mirrored_all" },
+            { "model": "divergentunderground:cube_all", "y": 180 },
+            { "model": "divergentunderground:cube_mirrored_all", "y": 180 }
+        ],              
+			"hardness=1": [      
+            { "model": "divergentunderground:cube_all" },
+            { "model": "divergentunderground:cube_mirrored_all" },
+            { "model": "divergentunderground:cube_all", "y": 180 },
+            { "model": "divergentunderground:cube_mirrored_all", "y": 180 }
+        ],              
+			"hardness=2": [      
+            { "model": "divergentunderground:cube_all" },
+            { "model": "divergentunderground:cube_mirrored_all" },
+            { "model": "divergentunderground:cube_all", "y": 180 },
+            { "model": "divergentunderground:cube_mirrored_all", "y": 180 }
+        ],
+			"hardness=3": [
+            { "model": "divergentunderground:cube_all" },
+            { "model": "divergentunderground:cube_mirrored_all" },
+            { "model": "divergentunderground:cube_all", "y": 180 },
+            { "model": "divergentunderground:cube_mirrored_all", "y": 180 }
+        ]
+		
+    }
+}
