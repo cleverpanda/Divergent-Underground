@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import panda.divergentunderground.DivergentUnderground;
 import panda.divergentunderground.init.ModItems;
 
 public class RockRegistry {
@@ -34,8 +35,7 @@ public class RockRegistry {
 		addRock(Blocks.EMERALD_ORE, ModItems.ROCK_STONE);
 		addRock(Blocks.DIAMOND_ORE, ModItems.ROCK_STONE);
 		addRock(Blocks.REDSTONE_ORE, ModItems.ROCK_STONE);
-		addRock(Blocks.LIT_REDSTONE_ORE, ModItems.ROCK_STONE);
-		
+		addRock(Blocks.LIT_REDSTONE_ORE, ModItems.ROCK_STONE);	
 	}
 	
 	public static void addRock(Block input, int i, Item output) {
@@ -63,7 +63,7 @@ public class RockRegistry {
 	
 	public static ItemStack getRocks(Pair input) {
 		ItemStack result = rockTable.get(input);
-		if (result.isEmpty())
+		if (result == null)
 			return ItemStack.EMPTY;
 		return result;
 	}

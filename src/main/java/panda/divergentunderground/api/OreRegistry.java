@@ -22,12 +22,6 @@ public class OreRegistry {
 		
 		addOre(Blocks.GOLD_ORE, ModItems.ORE_GOLD);
 		addOre(Blocks.IRON_ORE, ModItems.ORE_IRON);
-		//addOre(Blocks.COAL_ORE, ModItems.ROCK_STONE);
-		//addOre(Blocks.LAPIS_ORE, ModItems.ROCK_STONE);
-		//addOre(Blocks.QUARTZ_ORE, ModItems.ROCK_NETHERRACK);
-		//addOre(Blocks.EMERALD_ORE, ModItems.ROCK_STONE);
-		//addOre(Blocks.DIAMOND_ORE, ModItems.ROCK_STONE);
-		//addOre(Blocks.REDSTONE_ORE, ModItems.ROCK_STONE);
 		
 	}
 	
@@ -56,7 +50,7 @@ public class OreRegistry {
 	
 	public static ItemStack getOres(Pair input) {
 		ItemStack result = oreTable.get(input);
-		if (result.isEmpty())
+		if (result == null)
 			return ItemStack.EMPTY;
 		return result;
 	}

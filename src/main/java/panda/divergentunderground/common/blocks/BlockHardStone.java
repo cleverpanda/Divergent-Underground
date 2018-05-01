@@ -24,6 +24,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import panda.divergentunderground.ConfigDivergentUnderground;
 import panda.divergentunderground.DivergentUnderground;
+import panda.divergentunderground.api.GemRegistry;
 import panda.divergentunderground.api.OreRegistry;
 import panda.divergentunderground.api.RockRegistry;
 
@@ -32,12 +33,12 @@ public class BlockHardStone extends Block {
 	public static final PropertyInteger DEPTH = PropertyInteger.create("hardness", 0,3);
 	
 	private IBlockState alias;
-	private Boolean isore;
-	public BlockHardStone(IBlockState replacement,Boolean isOre) {
+	private int type;//0 = rock,1 = ore, 2= gem
+	public BlockHardStone(IBlockState replacement,int type) {
 		super(Material.ROCK);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DEPTH, 0));
 		alias = replacement;
-		isore = isOre;
+		this.type = type;
         setHardness(1.5F);
         setResistance(10.0F);
         setSoundType(SoundType.STONE);
@@ -96,15 +97,15 @@ public class BlockHardStone extends Block {
     }
 	@Override
     public int getExpDrop(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune)
-    {if(!isore){return 0;}
+    {if(this.type > 0){return 0;}
 		return alias.getBlock().getExpDrop(state, world, pos, fortune);
     }
 
 	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		Random rand = ((World)world).rand;
-		if(isore){
-			alias.getBlock().getDrops(drops, world, pos, state, fortune);
+		if(this.type == 1 || !ConfigDivergentUnderground.doGemDrops){
+			alias.getBlock().getDrops(drops, world, pos, alias, fortune);
 			
 			for(int i = 0; i < drops.size(); i++){
 				ItemStack stack = drops.get(i);
@@ -125,7 +126,30 @@ public class BlockHardStone extends Block {
 			ore.setCount(count+1);
 			drops.add(ore);
 			}
-		}
+		}else
+			if(this.type == 2){
+				alias.getBlock().getDrops(drops, world, pos, state, fortune);
+				
+				for(int i = 0; i < drops.size(); i++){
+					ItemStack stack = drops.get(i);
+					if (stack.getItem() == alias.getBlock().getItemDropped(state, rand, fortune) &&
+							Block.getBlockFromItem(alias.getBlock().getItemDropped(alias,rand,fortune)) == Blocks.AIR){
+						drops.remove(stack);
+					}
+				}
+
+				int count = rand.nextInt(fortune + 2) - 1;
+				if(GemRegistry.hasGems(new Pair(alias.getBlock(),alias.getBlock().getMetaFromState(alias)))){
+				ItemStack gem = GemRegistry.getGems(new Pair(alias.getBlock(),alias.getBlock().getMetaFromState(alias)));
+				DivergentUnderground.logger.info(gem);
+				if (count < 0)
+				{
+					count = 0;
+				}
+				gem.setCount(count+1);
+				drops.add(gem);
+				}
+			}
 		drops.add(new ItemStack(getItemDropped(state, rand, fortune),quantityDropped(rand)));
 	}
 

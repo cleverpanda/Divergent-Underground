@@ -27,6 +27,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import panda.divergentunderground.ConfigDivergentUnderground;
 import panda.divergentunderground.DivergentUnderground;
+import panda.divergentunderground.api.GemRegistry;
 import panda.divergentunderground.api.OreRegistry;
 import panda.divergentunderground.api.RockRegistry;
 import panda.divergentunderground.common.blocks.BlockHardStone;
@@ -60,6 +61,30 @@ public class EventsHandler {
 		            }
 				  ore.setCount(count+1);
 				  Block.spawnAsEntity(event.getWorld(), event.getPos(), ore);
+				  event.setDropChance(1.0F); 
+			  }
+
+			  if(GemRegistry.hasGems(new Pair(block,blockstack.getMetadata())) && ConfigDivergentUnderground.doGemDrops){
+				  
+				  Random rand = event.getWorld().rand;
+				  int count = rand.nextInt(event.getFortuneLevel() + 2) - 1;
+				  ItemStack gem = GemRegistry.getGems(new Pair(block,blockstack.getMetadata()));
+				  
+				  if (count < 0)
+		            {
+		                count = 0;
+		            }
+				  
+				  gem.setCount(count+1);
+				  List<ItemStack> drops = event.getDrops();
+				  for(int i = 0; i < drops.size(); i++){
+						ItemStack stack = drops.get(i);
+						
+						if (ItemStack.areItemsEqualIgnoreDurability(stack,blockstack) || Block.getBlockFromItem(event.getState().getBlock().getItemDropped(event.getState(),event.getWorld().rand,event.getFortuneLevel())) == Blocks.AIR){
+							drops.set(i, gem);
+						}
+						
+					}
 				  event.setDropChance(1.0F); 
 			  }
 			  

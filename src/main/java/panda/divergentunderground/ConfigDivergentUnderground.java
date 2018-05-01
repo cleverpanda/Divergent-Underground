@@ -14,11 +14,13 @@ public class ConfigDivergentUnderground {
 	public static boolean doCompression;
 	public static boolean doUpdateSound;
 	public static boolean addVanillaOreRockSmelting;
+	public static boolean doGemDrops;
 	
 	public static int colorHardnessZero;
 	public static int colorHardnessOne;
 	public static int colorHardnessTwo;
 	public static int colorHardnessThree;
+	
 	
 	private static final String MINING ="mining";
 	private ConfigDivergentUnderground(){DivergentUnderground.logger.info("Loading Config");}
@@ -34,6 +36,7 @@ public class ConfigDivergentUnderground {
 		doCompression = config.getBoolean("DoRockCompression", MINING, true, "Determines if stone should change hardness based on it's surroundings on random ticks");
 		doUpdateSound  = config.getBoolean("DoUpdateSound", MINING, true, "Whether or not to play a sound when blocks are compressed or decompressed");
 		addVanillaOreRockSmelting = config.getBoolean("addVanillaOreRockSmelting", MINING, true, "Whether or not to add smelting recipes for iron and gold rocks");
+		doGemDrops = config.getBoolean("DoUncutGemDrops", MINING, true, "Enable to drop uncut gems");
 		colorHardnessZero = Integer.decode(config.getString("ColorMultiplierHardnessZero", MINING, "0xFFFFFF", ""));
 		colorHardnessOne = Integer.decode(config.getString("ColorMultiplierHardnessOne", MINING, "0xE5DBD7", ""));
 		colorHardnessTwo = Integer.decode(config.getString("ColorMultiplierHardnessTwo", MINING, "0xBFB6B3", ""));

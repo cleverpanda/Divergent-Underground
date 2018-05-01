@@ -15,6 +15,8 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import panda.divergentunderground.DivergentUnderground;
+import panda.divergentunderground.api.compatabiliy.ThermalCompat;
 import panda.divergentunderground.common.blocks.BlockHardStone;
 import panda.divergentunderground.init.ModBlocks;
 import panda.divergentunderground.init.ModItems;
@@ -51,6 +53,11 @@ public class ClientProxy extends CommonProxy {
 		registerBlockModel(ModBlocks.ANDESITE_COBBLE);
 		registerBlockModel(ModBlocks.DIORITE_COBBLE);
 		registerBlockModel(ModBlocks.GRANITE_COBBLE);
+		
+		if(DivergentUnderground.Thermalenabled){
+			ThermalCompat.registerModels(event);
+			
+		}
 	}
 	
 	@Override
@@ -63,13 +70,23 @@ public class ClientProxy extends CommonProxy {
             }
         }, ModBlocks.HARD_STONE,ModBlocks.HARD_GRANITE,ModBlocks.HARD_IRON,ModBlocks.HARD_ANDESITE,ModBlocks.HARD_COAL,ModBlocks.HARD_DIAMOND,
         ModBlocks.HARD_DIORITE,ModBlocks.HARD_EMERALD,ModBlocks.HARD_GOLD,ModBlocks.HARD_LAPIS,ModBlocks.HARD_REDSTONE);
+		
+		if(DivergentUnderground.Thermalenabled){
+			Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor()
+	        {
+	            public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex)
+	            {
+	                return worldIn != null && pos != null ? BlockHardStone.getStoneColor(state) : 0xFFFFFFF;
+	            }
+	        }, ThermalCompat.HARD_COPPER);
+		}
 	}
 
-	private static void registerBlockModel(Block block) {
+	public static void registerBlockModel(Block block) {
 		registerItemModel(Item.getItemFromBlock(block));
 	}
 
-	private static void registerItemModel(Item item) {
+	public static void registerItemModel(Item item) {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName(), "inventory"));
 	}
 }

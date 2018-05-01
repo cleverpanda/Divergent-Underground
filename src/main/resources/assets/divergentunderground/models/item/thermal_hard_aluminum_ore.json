@@ -1,0 +1,6 @@
+{
+    "parent": "divergentunderground:block/cube_all",
+    "textures": {
+        "all": "thermalfoundation:blocks/ore/ore_aluminum"
+    }
+}

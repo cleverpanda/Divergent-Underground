@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import panda.divergentunderground.DivergentUnderground;
+import panda.divergentunderground.api.compatabiliy.ThermalCompat;
 
 
 @EventBusSubscriber
@@ -31,7 +32,7 @@ public final class ModItems {
 	public static final Item UNCUT_EMERALD = makeGem("emerald");
 	public static final Item UNCUT_DIAMOND = makeGem("diamond");
 
-	private static Item makeOre(String key){
+	public static Item makeOre(String key){
 		return simply(new Item(), "ore_"+key);
 	}
 	
@@ -79,9 +80,11 @@ public final class ModItems {
 		registerItemBlock(registry, ModBlocks.ANDESITE_COBBLE);
 		registerItemBlock(registry, ModBlocks.DIORITE_COBBLE);
 		registerItemBlock(registry, ModBlocks.GRANITE_COBBLE);
+		
+		ThermalCompat.registerItems(event);
 	}
 
-	private static void registerItemBlock(IForgeRegistry<Item> registry, Block block) {
+	public static void registerItemBlock(IForgeRegistry<Item> registry, Block block) {
 		registry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
 	}
 }

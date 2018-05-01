@@ -2,6 +2,8 @@ package panda.divergentunderground.common.world;
 
 import java.util.Random;
 
+import cofh.thermalfoundation.block.BlockOre;
+import cofh.thermalfoundation.init.TFBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.IBlockState;
@@ -12,6 +14,8 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
+import panda.divergentunderground.DivergentUnderground;
+import panda.divergentunderground.api.compatabiliy.ThermalCompat;
 import panda.divergentunderground.common.blocks.BlockHardStone;
 import panda.divergentunderground.init.ModBlocks;
 
@@ -66,7 +70,13 @@ public class StoneGenerator implements IWorldGenerator {
                     }else
                     if(block == Blocks.REDSTONE_ORE){
                         doStoneReplace(ModBlocks.HARD_REDSTONE,world,pos,y,y1);
-                    }
+                    }else
+                    	
+                    	if(DivergentUnderground.Thermalenabled && block == TFBlocks.blockOre){
+                    		if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.COPPER){
+                                doStoneReplace(ThermalCompat.HARD_COPPER,world,pos,y,y1);
+                            }
+                    	}
                 }
             }            
         }

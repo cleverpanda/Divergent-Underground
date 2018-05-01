@@ -20,11 +20,37 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 repositories {
   mavenLocal()
   mavenCentral()
+
 }
 
+repositories {
+  maven { // CoFH
+    name 'Covers Maven'
+    url 'http://maven.covers1624.net/'
+  }
+  maven { // CCL, CCC, NEI
+    name 'Chickenbones Repo'
+    url 'http://chickenbones.net/maven/'
+  }
+  
+}
+
+dependencies {
+deobfCompile "codechicken:CodeChickenLib:1.12.2-3.1.7.+:universal"
+
+deobfCompile ("cofh:CoFHCore:1.12.2-4.3.5.13:universal") {
+    exclude group: 'mezz.jei'
+  }
+  deobfCompile ("cofh:ThermalFoundation:1.12.2-2.4.+:universal") {
+    exclude group: 'mezz.jei'
+  }
+  deobfCompile ("cofh:ThermalExpansion:1.12.2-5.4.+:universal") {
+    exclude group: 'mezz.jei'
+  }
+}
 
 minecraft {
-    version = "1.12.2-14.23.2.2654"
+    version = "1.12.2-14.23.3.2655"
     runDir = "run"
     mappings = "snapshot_20180322"
 	

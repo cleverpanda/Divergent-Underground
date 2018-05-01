@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStone;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.PotionTypes;
 import net.minecraft.item.Item;
@@ -34,13 +36,17 @@ public class ModRecipes {
 	
 	
 	public static void register() {
-		//removeRecipe(new ResourceLocation("minecraft:leather"));
+		GameRegistry.addSmelting(new ItemStack(ModBlocks.GRANITE_COBBLE,1), new ItemStack(Blocks.STONE,1,1), 0.1f);
+		GameRegistry.addSmelting(new ItemStack(ModBlocks.DIORITE_COBBLE,1), new ItemStack(Blocks.STONE,1,3), 0.1f);
+		GameRegistry.addSmelting(new ItemStack(ModBlocks.ANDESITE_COBBLE,1), new ItemStack(Blocks.STONE,1,5), 0.1f);
 		
-		//rockTable.put(key, value);
 		if(ConfigDivergentUnderground.addVanillaOreRockSmelting){
 			GameRegistry.addSmelting(ModItems.ORE_IRON, new ItemStack(Items.IRON_INGOT), 0.7f);
 			GameRegistry.addSmelting(ModItems.ORE_GOLD, new ItemStack(Items.GOLD_INGOT), 1.0f);
 		}
+		
+		//GameRegistry.addSmelting(ModBlocks.ANDESITE_COBBLE, new ItemStack(Blocks.STONE,1,5), 0.1f);
+		//GameRegistry.addSmelting(ModBlocks.DIORITE_COBBLE, new ItemStack(Blocks.STONE,1,3), 0.1f);
 		
 	}
 	
