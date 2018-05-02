@@ -53,7 +53,7 @@ public class BlockHardStone extends Block {
 
 	public static int getStoneColor(IBlockState state)
     {
-        switch(state.getBlock().getMetaFromState(state)){
+        switch(state.getValue(DEPTH)){
         case 1:
         	return ConfigDivergentUnderground.colorHardnessOne;
         case 2:
@@ -219,6 +219,12 @@ public class BlockHardStone extends Block {
             return new ItemStack(item, 1, i);
         }
     }
+	
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+
+		return alias.getLightValue();
+	}
 
     public static boolean isCompressingBlock(Block block) {
 		return block instanceof BlockStone ||

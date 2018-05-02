@@ -20,68 +20,92 @@ import panda.divergentunderground.common.blocks.BlockHardStone;
 import panda.divergentunderground.init.ModBlocks;
 
 public class StoneGenerator implements IWorldGenerator {
-    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-        if(!(world instanceof WorldServer)) {
-            return;
-        }
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+		if(!(world instanceof WorldServer)) {
+			return;
+		}
 
 		int x = chunkX * 16 + 8;
 		int z = chunkZ * 16 + 8 ;
 
-        for (int x1 = x; x1 < x + 16; x1++) {
-            for (int z1 = z; z1 < z + 16; z1++) {
-                int y = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
-                for (int y1 = y; y1 >= 0; y1--) {
-                    BlockPos pos = new BlockPos(x1, y1, z1);
-                    IBlockState state = world.getBlockState(pos);
-                    Block block = state.getBlock();
+		for (int x1 = x; x1 < x + 16; x1++) {
+			for (int z1 = z; z1 < z + 16; z1++) {
+				int y = world.getTopSolidOrLiquidBlock(new BlockPos(x1, 0, z1)).getY();
+				for (int y1 = y; y1 >= 0; y1--) {
+					BlockPos pos = new BlockPos(x1, y1, z1);
+					IBlockState state = world.getBlockState(pos);
+					Block block = state.getBlock();
 
-                    if (block == Blocks.STONE) {
-                    	if(state.getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE){
-                    		doStoneReplace(ModBlocks.HARD_STONE,world,pos,y,y1);
-                    	}else
-                    	if(state.getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE){
-                    		doStoneReplace(ModBlocks.HARD_GRANITE,world,pos,y,y1);  
-                    	}else
-                        if(state.getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE){
-                        	doStoneReplace(ModBlocks.HARD_ANDESITE,world,pos,y,y1);  
-                        }else
-                        if(state.getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE){
-                            doStoneReplace(ModBlocks.HARD_DIORITE,world,pos,y,y1);  
-                        }                   	
-                    }else
-                    if(block == Blocks.IRON_ORE){
-                    	doStoneReplace(ModBlocks.HARD_IRON,world,pos,y,y1);
-                    }else
-                    if(block == Blocks.GOLD_ORE){
-                        doStoneReplace(ModBlocks.HARD_GOLD,world,pos,y,y1);
-                    }else
-                    if(block == Blocks.COAL_ORE){
-                        doStoneReplace(ModBlocks.HARD_COAL,world,pos,y,y1);
-                    }else
-                    if(block == Blocks.DIAMOND_ORE){
-                        doStoneReplace(ModBlocks.HARD_DIAMOND,world,pos,y,y1);
-                    }else
-                    if(block == Blocks.EMERALD_ORE){
-                        doStoneReplace(ModBlocks.HARD_EMERALD,world,pos,y,y1);
-                    }else
-                    if(block == Blocks.LAPIS_ORE){
-                        doStoneReplace(ModBlocks.HARD_LAPIS,world,pos,y,y1);
-                    }else
-                    if(block == Blocks.REDSTONE_ORE){
-                        doStoneReplace(ModBlocks.HARD_REDSTONE,world,pos,y,y1);
-                    }else
-                    	
-                    	if(DivergentUnderground.Thermalenabled && block == TFBlocks.blockOre){
-                    		if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.COPPER){
-                                doStoneReplace(ThermalCompat.HARD_COPPER,world,pos,y,y1);
-                            }
-                    	}
-                }
-            }            
-        }
-        
-    }
+					if (block == Blocks.STONE) {
+						if(state.getValue(BlockStone.VARIANT) == BlockStone.EnumType.STONE){
+							doStoneReplace(ModBlocks.HARD_STONE,world,pos,y,y1);
+						}else
+							if(state.getValue(BlockStone.VARIANT) == BlockStone.EnumType.GRANITE){
+								doStoneReplace(ModBlocks.HARD_GRANITE,world,pos,y,y1);  
+							}else
+								if(state.getValue(BlockStone.VARIANT) == BlockStone.EnumType.ANDESITE){
+									doStoneReplace(ModBlocks.HARD_ANDESITE,world,pos,y,y1);  
+								}else
+									if(state.getValue(BlockStone.VARIANT) == BlockStone.EnumType.DIORITE){
+										doStoneReplace(ModBlocks.HARD_DIORITE,world,pos,y,y1);  
+									}                   	
+					}else
+						if(block == Blocks.IRON_ORE){
+							doStoneReplace(ModBlocks.HARD_IRON,world,pos,y,y1);
+						}else
+							if(block == Blocks.GOLD_ORE){
+								doStoneReplace(ModBlocks.HARD_GOLD,world,pos,y,y1);
+							}else
+								if(block == Blocks.COAL_ORE){
+									doStoneReplace(ModBlocks.HARD_COAL,world,pos,y,y1);
+								}else
+									if(block == Blocks.DIAMOND_ORE){
+										doStoneReplace(ModBlocks.HARD_DIAMOND,world,pos,y,y1);
+									}else
+										if(block == Blocks.EMERALD_ORE){
+											doStoneReplace(ModBlocks.HARD_EMERALD,world,pos,y,y1);
+										}else
+											if(block == Blocks.LAPIS_ORE){
+												doStoneReplace(ModBlocks.HARD_LAPIS,world,pos,y,y1);
+											}else
+												if(block == Blocks.REDSTONE_ORE){
+													doStoneReplace(ModBlocks.HARD_REDSTONE,world,pos,y,y1);
+												}else
+
+													if(DivergentUnderground.Thermalenabled && block == TFBlocks.blockOre){
+														if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.COPPER){
+															doStoneReplace(ThermalCompat.HARD_COPPER,world,pos,y,y1);
+														}else
+															if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.ALUMINUM){
+																doStoneReplace(ThermalCompat.HARD_ALUMINUM,world,pos,y,y1);
+															}else
+																if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.IRIDIUM){
+																	doStoneReplace(ThermalCompat.HARD_IRIDIUM,world,pos,y,y1);
+																}else
+																	if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.LEAD){
+																		doStoneReplace(ThermalCompat.HARD_LEAD,world,pos,y,y1);
+																	}else
+																		if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.MITHRIL){
+																			doStoneReplace(ThermalCompat.HARD_MITHRIL,world,pos,y,y1);
+																		}else
+																			if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.NICKEL){
+																				doStoneReplace(ThermalCompat.HARD_NICKEL,world,pos,y,y1);
+																			}else
+																				if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.PLATINUM){
+																					doStoneReplace(ThermalCompat.HARD_PLATINUM,world,pos,y,y1);
+																				}else
+																					if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.SILVER){
+																						doStoneReplace(ThermalCompat.HARD_SILVER,world,pos,y,y1);
+																					}else
+																						if(state.getValue(BlockOre.VARIANT)  == BlockOre.Type.TIN){
+																							doStoneReplace(ThermalCompat.HARD_TIN,world,pos,y,y1);
+																						}
+													}
+				}
+			}            
+		}
+
+	}
     
     private void doStoneReplace(Block hardStoneBlock,World world,BlockPos pos, int y, int y1){
     	IBlockState newBlockState = ((BlockHardStone) hardStoneBlock).getStateFromDepth(y,y1,BlockHardStone.isSurroundedByCompressingBlocks(world, pos, true));
