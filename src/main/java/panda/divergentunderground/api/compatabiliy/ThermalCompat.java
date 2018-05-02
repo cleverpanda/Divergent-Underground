@@ -56,7 +56,7 @@ public class ThermalCompat {
 
 	//51
 	public static void init(){
-		if(DivergentUnderground.Thermalenabled){
+		
 			RockRegistry.addRock(TFBlocks.blockOre,0, ModItems.ROCK_STONE);
 			RockRegistry.addRock(TFBlocks.blockOre,1, ModItems.ROCK_STONE);
 			RockRegistry.addRock(TFBlocks.blockOre,2, ModItems.ROCK_STONE);
@@ -134,8 +134,6 @@ public class ThermalCompat {
 				ThermalExpansionHelper.addPulverizerRecipe(4000, new ItemStack(Blocks.DIAMOND_ORE), new ItemStack(ModItems.UNCUT_DIAMOND, 2));
 				ThermalExpansionHelper.addPulverizerRecipe(4000, new ItemStack(Blocks.EMERALD_ORE), new ItemStack(ModItems.UNCUT_EMERALD, 2));
 			}
-		
-		}
 	}
 	
 	private static void addInductionSmelterRecipes(ItemStack input, ItemStack output, int chance1) {

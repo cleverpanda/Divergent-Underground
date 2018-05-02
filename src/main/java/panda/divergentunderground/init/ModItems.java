@@ -81,7 +81,9 @@ public final class ModItems {
 		registerItemBlock(registry, ModBlocks.DIORITE_COBBLE);
 		registerItemBlock(registry, ModBlocks.GRANITE_COBBLE);
 		
-		ThermalCompat.registerItems(event);
+		if(DivergentUnderground.Thermalenabled){
+			ThermalCompat.registerItems(event);
+		}
 	}
 
 	public static void registerItemBlock(IForgeRegistry<Item> registry, Block block) {

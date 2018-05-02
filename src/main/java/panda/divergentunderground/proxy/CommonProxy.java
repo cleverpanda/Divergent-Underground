@@ -2,6 +2,7 @@ package panda.divergentunderground.proxy;
 
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.oredict.OreDictionary;
+import panda.divergentunderground.DivergentUnderground;
 import panda.divergentunderground.api.compatabiliy.ThermalCompat;
 import panda.divergentunderground.init.ModBlocks;
 import panda.divergentunderground.init.ModItems;
@@ -52,6 +53,8 @@ public class CommonProxy {
     	
     	OreDictionary.registerOre("gemDiamond",ModItems.UNCUT_DIAMOND);
     	OreDictionary.registerOre("gemEmerald",ModItems.UNCUT_EMERALD);
-    	ThermalCompat.registerOreDicts();
+    	if(DivergentUnderground.Thermalenabled){
+    		ThermalCompat.registerOreDicts();
+		}
     }
 }

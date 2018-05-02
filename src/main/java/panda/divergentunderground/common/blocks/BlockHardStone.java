@@ -17,6 +17,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -30,6 +32,15 @@ import panda.divergentunderground.api.RockRegistry;
 
 public class BlockHardStone extends Block {
 	
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if(playerIn.getHeldItem(hand) != ItemStack.EMPTY && playerIn.getHeldItem(hand).getItem() == Items.NETHER_STAR){
+			worldIn.setBlockState(pos, state.cycleProperty(DEPTH));
+		}
+		
+		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+	}
+
 	public static final PropertyInteger DEPTH = PropertyInteger.create("hardness", 0,3);
 	
 	private IBlockState alias;
@@ -50,6 +61,19 @@ public class BlockHardStone extends Block {
 
 		return new ItemStack(this);
 	}
+	
+	public boolean doStoneReplace(IBlockState oldstate,World world,BlockPos pos, int y, int y1){
+		if(oldstate != alias){
+			return false;
+		}
+    	IBlockState newBlockState = this.getStateFromDepth(y,y1,isSurroundedByCompressingBlocks(world, pos, true));
+        if(newBlockState != null){
+        	world.setBlockState(pos, newBlockState, 20 /*no block update, no observer checks*/);
+        	return true;
+        }
+        return false;
+        
+    }
 
 	public static int getStoneColor(IBlockState state)
     {

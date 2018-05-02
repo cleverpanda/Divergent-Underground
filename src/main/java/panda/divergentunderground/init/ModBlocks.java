@@ -1,5 +1,8 @@
 package panda.divergentunderground.init;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.Material;
@@ -13,10 +16,14 @@ import panda.divergentunderground.api.compatabiliy.ThermalCompat;
 import panda.divergentunderground.common.blocks.BlockHardStone;
 
 
+
 @EventBusSubscriber
 public final class ModBlocks {
 	
 	private ModBlocks(){DivergentUnderground.logger.info("Registering Blocks");}
+	
+	public static List<BlockHardStone> hardStones = new ArrayList<>();
+	
 	
 	public static final Block HARD_STONE = simply(new BlockHardStone(Blocks.STONE.getDefaultState(),0),"hard_stone");
 	public static final Block HARD_GRANITE = simply(new BlockHardStone(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.GRANITE),0),"hard_granite");
@@ -37,9 +44,12 @@ public final class ModBlocks {
 	public static final Block DIORITE_COBBLE = simply(new Block(Material.ROCK),"diorite_cobblestone");
 	
 	
-	
+	private static Block simply(Block block, String name) {
+		return block.setRegistryName(DivergentUnderground.MODID, name).setUnlocalizedName(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
+	}
 
-	public static Block simply(Block block, String name) {
+	public static Block simply(BlockHardStone block, String name) {
+		hardStones.add((BlockHardStone) block);
 		return block.setRegistryName(DivergentUnderground.MODID, name).setUnlocalizedName(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
 	}
 
@@ -62,8 +72,10 @@ public final class ModBlocks {
 		registry.register(ANDESITE_COBBLE);
 		registry.register(DIORITE_COBBLE);
 		
+		if(DivergentUnderground.Thermalenabled){
+			ThermalCompat.registerBlocks(event);
+		}
 		
-		ThermalCompat.registerBlocks(event);
 
 		
 	}

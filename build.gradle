@@ -47,6 +47,9 @@ deobfCompile ("cofh:CoFHCore:1.12.2-4.3.5.13:universal") {
   deobfCompile ("cofh:ThermalExpansion:1.12.2-5.4.+:universal") {
     exclude group: 'mezz.jei'
   }
+  deobfCompile ("cofh:CoFHWorld:1.12.2-1.1.1.+:universal") {
+    exclude group: 'mezz.jei'
+  }
 }
 
 minecraft {

@@ -62,24 +62,13 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void registerColorHandlers() {
-		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor()
-        {
-            public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex)
-            {
-                return worldIn != null && pos != null ? BlockHardStone.getStoneColor(state) : 0xFFFFFFF;
-            }
-        }, ModBlocks.HARD_STONE,ModBlocks.HARD_GRANITE,ModBlocks.HARD_IRON,ModBlocks.HARD_ANDESITE,ModBlocks.HARD_COAL,ModBlocks.HARD_DIAMOND,
-        ModBlocks.HARD_DIORITE,ModBlocks.HARD_EMERALD,ModBlocks.HARD_GOLD,ModBlocks.HARD_LAPIS,ModBlocks.HARD_REDSTONE);
-		
-		if(DivergentUnderground.Thermalenabled){
 			Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor()
 	        {
 	            public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex)
 	            {
 	                return worldIn != null && pos != null ? BlockHardStone.getStoneColor(state) : 0xFFFFFFF;
 	            }
-	        }, ThermalCompat.HARD_COPPER);
-		}
+	        }, ModBlocks.hardStones.toArray(new Block[ModBlocks.hardStones.size()]));		
 	}
 
 	public static void registerBlockModel(Block block) {
