@@ -27,11 +27,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import panda.divergentunderground.ConfigDivergentUnderground;
 import panda.divergentunderground.DivergentUnderground;
-import panda.divergentunderground.api.GemRegistry;
-import panda.divergentunderground.api.OreRegistry;
-import panda.divergentunderground.api.RockRegistry;
 import panda.divergentunderground.common.blocks.BlockHardStone;
 import panda.divergentunderground.init.ModBlocks;
+import panda.divergentunderground.registries.GemRegistry;
+import panda.divergentunderground.registries.OreRegistry;
+import panda.divergentunderground.registries.RockRegistry;
 
 public class EventsHandler {
 	

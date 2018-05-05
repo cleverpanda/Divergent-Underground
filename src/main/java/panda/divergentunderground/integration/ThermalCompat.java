@@ -1,13 +1,13 @@
-package panda.divergentunderground.api.compatabiliy;
+package panda.divergentunderground.integration;
 
 import panda.divergentunderground.ConfigDivergentUnderground;
 import panda.divergentunderground.DivergentUnderground;
-import panda.divergentunderground.api.OreRegistry;
-import panda.divergentunderground.api.RockRegistry;
 import panda.divergentunderground.common.blocks.BlockHardStone;
 import panda.divergentunderground.init.ModBlocks;
 import panda.divergentunderground.init.ModItems;
 import panda.divergentunderground.proxy.ClientProxy;
+import panda.divergentunderground.registries.OreRegistry;
+import panda.divergentunderground.registries.RockRegistry;
 import cofh.api.util.ThermalExpansionHelper;
 import cofh.core.util.helpers.FluidHelper;
 import cofh.core.util.helpers.ItemHelper;
@@ -196,9 +196,10 @@ public class ThermalCompat {
     	doDicts("Mithril",ORE_MITHRIL,HARD_MITHRIL);
     }
     
-    private static void doDicts(String type,Item Ore, Block block){
+    private static void doDicts(String type,Item ore, Block block){
     	OreDictionary.registerOre("ore"+type, block);
-    	OreDictionary.registerOre("rockOre"+type,Ore);
+    	OreDictionary.registerOre("ore"+type, ore);
+    	OreDictionary.registerOre("rockOre"+type,ore);
     }
     
     public static void registerModels(ModelRegistryEvent event) {

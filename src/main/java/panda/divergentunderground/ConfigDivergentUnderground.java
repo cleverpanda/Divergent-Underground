@@ -33,7 +33,7 @@ public class ConfigDivergentUnderground {
 		hardnessOneSD = config.getFloat("ReductionHardness1", MINING, 1.5f, 0, 32767, "How many times harder to mine a hardness level 1 rock will be");
 		hardnessTwoSD = config.getFloat("ReductionHardness2", MINING, 3.0f, 0, 32767, "How many times harder to mine a hardness level 2 rock will be");
 		hardnessThreeSD = config.getFloat("ReductionHardness3", MINING, 5.0f, 0, 32767, "How many times harder to mine a hardness level 3 rock will be");
-		doCompression = config.getBoolean("DoRockCompression", MINING, true, "Determines if stone should change hardness based on it's surroundings on random ticks");
+		doCompression = config.getBoolean("DoRockCompression", MINING, false, "Determines if stone should change hardness based on it's surroundings on random ticks");
 		doUpdateSound  = config.getBoolean("DoUpdateSound", MINING, true, "Whether or not to play a sound when blocks are compressed or decompressed");
 		addVanillaOreRockSmelting = config.getBoolean("addVanillaOreRockSmelting", MINING, true, "Whether or not to add smelting recipes for iron and gold rocks");
 		doGemDrops = config.getBoolean("DoUncutGemDrops", MINING, true, "Enable to drop uncut gems");

@@ -3,9 +3,13 @@ package panda.divergentunderground.proxy;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import panda.divergentunderground.DivergentUnderground;
-import panda.divergentunderground.api.compatabiliy.ThermalCompat;
 import panda.divergentunderground.init.ModBlocks;
 import panda.divergentunderground.init.ModItems;
+import panda.divergentunderground.integration.BiomesOPlentyCompat;
+import panda.divergentunderground.integration.ForestryCompat;
+import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
+import panda.divergentunderground.integration.IndustrialCraftCompat;
+import panda.divergentunderground.integration.ThermalCompat;
 
 public class CommonProxy {
 
@@ -51,10 +55,22 @@ public class CommonProxy {
     	OreDictionary.registerOre("rockOreGold",ModItems.ORE_GOLD);
     	OreDictionary.registerOre("rockOreIron",ModItems.ORE_IRON);
     	
-    	OreDictionary.registerOre("gemDiamond",ModItems.UNCUT_DIAMOND);
-    	OreDictionary.registerOre("gemEmerald",ModItems.UNCUT_EMERALD);
+    	OreDictionary.registerOre("uncutDiamond",ModItems.UNCUT_DIAMOND);
+    	OreDictionary.registerOre("uncutEmerald",ModItems.UNCUT_EMERALD);
     	if(DivergentUnderground.Thermalenabled){
     		ThermalCompat.registerOreDicts();
+		}
+    	if(DivergentUnderground.BOPenabled){
+			BiomesOPlentyCompat.registerOreDicts();
+		}
+		if(DivergentUnderground.ImmersiveEngineeringenabled){
+			ImmersiveEngineeringCompat.registerOreDicts();
+		}
+		if(DivergentUnderground.Forestryenabled){
+			ForestryCompat.registerOreDicts();
+		}
+		if(DivergentUnderground.IndustrialCraftenabled){
+			IndustrialCraftCompat.registerOreDicts();
 		}
     }
 }

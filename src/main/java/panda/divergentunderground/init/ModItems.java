@@ -8,7 +8,11 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import panda.divergentunderground.DivergentUnderground;
-import panda.divergentunderground.api.compatabiliy.ThermalCompat;
+import panda.divergentunderground.integration.BiomesOPlentyCompat;
+import panda.divergentunderground.integration.ForestryCompat;
+import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
+import panda.divergentunderground.integration.IndustrialCraftCompat;
+import panda.divergentunderground.integration.ThermalCompat;
 
 
 @EventBusSubscriber
@@ -40,7 +44,7 @@ public final class ModItems {
 		return simply(new Item(), "rock_"+key);
 	}
 	
-	private static Item makeGem(String key){
+	public static Item makeGem(String key){
 		return simply(new Item(), "gem_raw_"+key);
 	}
 	
@@ -84,6 +88,19 @@ public final class ModItems {
 		if(DivergentUnderground.Thermalenabled){
 			ThermalCompat.registerItems(event);
 		}
+		if(DivergentUnderground.BOPenabled){
+			BiomesOPlentyCompat.registerItems(event);
+		}
+		if(DivergentUnderground.ImmersiveEngineeringenabled){
+			ImmersiveEngineeringCompat.registerItems(event);
+		}
+		if(DivergentUnderground.Forestryenabled){
+			ForestryCompat.registerItems(event);
+		}
+		if(DivergentUnderground.IndustrialCraftenabled){
+			IndustrialCraftCompat.registerItems(event);
+		}
+		
 	}
 
 	public static void registerItemBlock(IForgeRegistry<Item> registry, Block block) {

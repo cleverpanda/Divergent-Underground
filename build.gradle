@@ -24,6 +24,10 @@ repositories {
 }
 
 repositories {
+  maven {
+    name 'IE Repo'
+    url 'https://maven.blamejared.com/'
+  }
   maven { // CoFH
     name 'Covers Maven'
     url 'http://maven.covers1624.net/'
@@ -31,6 +35,10 @@ repositories {
   maven { // CCL, CCC, NEI
     name 'Chickenbones Repo'
     url 'http://chickenbones.net/maven/'
+  }
+  maven{
+    name = "ic2, forestry"
+    url = "http://maven.ic2.player.to/"
   }
   
 }
@@ -50,6 +58,14 @@ deobfCompile ("cofh:CoFHCore:1.12.2-4.3.5.13:universal") {
   deobfCompile ("cofh:CoFHWorld:1.12.2-1.1.1.+:universal") {
     exclude group: 'mezz.jei'
   }
+  deobfCompile ("com.github.glitchfiend.biomesoplenty:BiomesOPlenty:1.12.2-7.0.1.2344:deobf")
+  
+  deobfCompile("net.sengir.forestry:forestry_1.12.2:5.8.0.255") {
+            transitive = false
+        }
+		
+  deobfCompile("net.industrial-craft:industrialcraft-2:2.8.75-ex112")
+  deobfCompile("blusunrize:ImmersiveEngineering:0.12-82-381:deobf")
 }
 
 minecraft {

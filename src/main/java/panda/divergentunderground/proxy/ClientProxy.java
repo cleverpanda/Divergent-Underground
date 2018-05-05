@@ -16,10 +16,13 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import panda.divergentunderground.DivergentUnderground;
-import panda.divergentunderground.api.compatabiliy.ThermalCompat;
 import panda.divergentunderground.common.blocks.BlockHardStone;
 import panda.divergentunderground.init.ModBlocks;
 import panda.divergentunderground.init.ModItems;
+import panda.divergentunderground.integration.BiomesOPlentyCompat;
+import panda.divergentunderground.integration.ForestryCompat;
+import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
+import panda.divergentunderground.integration.ThermalCompat;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -56,7 +59,15 @@ public class ClientProxy extends CommonProxy {
 		
 		if(DivergentUnderground.Thermalenabled){
 			ThermalCompat.registerModels(event);
-			
+		}
+		if(DivergentUnderground.BOPenabled){
+			BiomesOPlentyCompat.registerModels(event);
+		}
+		if(DivergentUnderground.ImmersiveEngineeringenabled){
+			ImmersiveEngineeringCompat.registerModels(event);
+		}
+		if(DivergentUnderground.Forestryenabled){
+			ForestryCompat.registerModels(event);
 		}
 	}
 	

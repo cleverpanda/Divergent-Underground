@@ -12,8 +12,12 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import panda.divergentunderground.DivergentUnderground;
-import panda.divergentunderground.api.compatabiliy.ThermalCompat;
 import panda.divergentunderground.common.blocks.BlockHardStone;
+import panda.divergentunderground.integration.BiomesOPlentyCompat;
+import panda.divergentunderground.integration.ForestryCompat;
+import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
+import panda.divergentunderground.integration.IndustrialCraftCompat;
+import panda.divergentunderground.integration.ThermalCompat;
 
 
 
@@ -75,6 +79,20 @@ public final class ModBlocks {
 		if(DivergentUnderground.Thermalenabled){
 			ThermalCompat.registerBlocks(event);
 		}
+		if(DivergentUnderground.BOPenabled){
+			BiomesOPlentyCompat.registerBlocks(event);
+		}
+		if(DivergentUnderground.ImmersiveEngineeringenabled){
+			ImmersiveEngineeringCompat.registerBlocks(event);
+		}
+		if(DivergentUnderground.Forestryenabled){
+			ForestryCompat.registerBlocks(event);
+		}
+		if(DivergentUnderground.IndustrialCraftenabled){
+			IndustrialCraftCompat.registerBlocks(event);
+		}
+		
+		
 		
 
 		

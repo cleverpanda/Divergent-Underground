@@ -15,15 +15,19 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import panda.divergentunderground.api.GemRegistry;
-import panda.divergentunderground.api.OreRegistry;
-import panda.divergentunderground.api.RockRegistry;
-import panda.divergentunderground.api.compatabiliy.ThermalCompat;
 import panda.divergentunderground.common.eventhandler.EventsHandler;
 import panda.divergentunderground.common.world.StoneGenerator;
 import panda.divergentunderground.init.ModItems;
 import panda.divergentunderground.init.ModRecipes;
+import panda.divergentunderground.integration.BiomesOPlentyCompat;
+import panda.divergentunderground.integration.ForestryCompat;
+import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
+import panda.divergentunderground.integration.IndustrialCraftCompat;
+import panda.divergentunderground.integration.ThermalCompat;
 import panda.divergentunderground.proxy.CommonProxy;
+import panda.divergentunderground.registries.GemRegistry;
+import panda.divergentunderground.registries.OreRegistry;
+import panda.divergentunderground.registries.RockRegistry;
 import net.minecraftforge.common.config.Configuration;
 
 
@@ -31,7 +35,7 @@ import net.minecraftforge.common.config.Configuration;
 dependencies = "after:thermalfoundation@[2.4,);"+ "after:cofhworld;"+ "after:thermalexpansion;")
 public class DivergentUnderground {
 	public static final String MODID = "divergentunderground";
-	public static final String VERSION = "0.48.0";
+	public static final String VERSION = "0.50.0";
 	public static final String NAME = "Divergent Underground";
 	public static SimpleNetworkWrapper wrapper;
 	
@@ -44,6 +48,10 @@ public class DivergentUnderground {
 	public Configuration config;
 	
 	public static boolean Thermalenabled;
+	public static boolean BOPenabled;
+	public static boolean Forestryenabled;
+	public static boolean IndustrialCraftenabled;
+	public static boolean ImmersiveEngineeringenabled;
 	
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event){
@@ -66,6 +74,19 @@ public class DivergentUnderground {
 		if(DivergentUnderground.Thermalenabled){
 			ThermalCompat.init();
 		}
+		if(DivergentUnderground.BOPenabled){
+			BiomesOPlentyCompat.init();
+		}
+		if(DivergentUnderground.ImmersiveEngineeringenabled){
+			ImmersiveEngineeringCompat.init();
+		}
+		if(DivergentUnderground.Forestryenabled){
+			ForestryCompat.init();
+		}
+		if(DivergentUnderground.IndustrialCraftenabled){
+			IndustrialCraftCompat.init();
+		}
+		
 		proxy.registerColorHandlers();
 		proxy.registerOreDicts();
 		
@@ -77,6 +98,10 @@ public class DivergentUnderground {
 	     // this.moduleManager.registerModules(ModuleRequirementGameStages.class);
 	    //}
 		Thermalenabled = Loader.isModLoaded("thermalfoundation");
+		BOPenabled = Loader.isModLoaded("biomesoplenty");
+		Forestryenabled = Loader.isModLoaded("forestry");
+		IndustrialCraftenabled = Loader.isModLoaded("industrialcraft");
+		ImmersiveEngineeringenabled = Loader.isModLoaded("immersiveengineering");
 
 	  }
 	
@@ -86,5 +111,6 @@ public class DivergentUnderground {
 			return new ItemStack(ModItems.ORE_IRON);
 		}
 	};
+
 	
 }

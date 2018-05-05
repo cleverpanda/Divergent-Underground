@@ -1,4 +1,4 @@
-package panda.divergentunderground.api;
+package panda.divergentunderground.registries;
 
 import java.util.HashMap;
 import java.util.Map;

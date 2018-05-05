@@ -1,1 +1,2 @@
-gradlew clean setupDecompWorkspace eclipse --refresh-dependencies pause
+gradlew setupDecompWorkspace eclipse --refresh-dependencies
+pause

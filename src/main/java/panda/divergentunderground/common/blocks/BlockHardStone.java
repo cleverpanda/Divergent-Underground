@@ -26,11 +26,11 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import panda.divergentunderground.ConfigDivergentUnderground;
 import panda.divergentunderground.DivergentUnderground;
-import panda.divergentunderground.api.GemRegistry;
-import panda.divergentunderground.api.OreRegistry;
-import panda.divergentunderground.api.RockRegistry;
+import panda.divergentunderground.registries.GemRegistry;
+import panda.divergentunderground.registries.OreRegistry;
+import panda.divergentunderground.registries.RockRegistry;
 
-public class BlockHardStone extends Block {
+public class BlockHardStone extends BlockOre {
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
@@ -46,7 +46,7 @@ public class BlockHardStone extends Block {
 	private IBlockState alias;
 	private int type;//0 = rock,1 = ore, 2= gem
 	public BlockHardStone(IBlockState replacement,int type) {
-		super(Material.ROCK);
+		super();
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DEPTH, 0));
 		alias = replacement;
 		this.type = type;
