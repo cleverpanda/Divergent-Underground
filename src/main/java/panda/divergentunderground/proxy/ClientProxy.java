@@ -22,6 +22,7 @@ import panda.divergentunderground.init.ModItems;
 import panda.divergentunderground.integration.BiomesOPlentyCompat;
 import panda.divergentunderground.integration.ForestryCompat;
 import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
+import panda.divergentunderground.integration.IndustrialCraftCompat;
 import panda.divergentunderground.integration.ThermalCompat;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
@@ -39,9 +40,10 @@ public class ClientProxy extends CommonProxy {
 		registerItemModel(ModItems.ROCK_ENDSTONE);
 		registerItemModel(ModItems.ORE_GOLD);
 		registerItemModel(ModItems.ORE_IRON);
-		registerItemModel(ModItems.ORE_COPPER);
+		//registerItemModel(ModItems.ORE_COPPER);
 		registerItemModel(ModItems.UNCUT_DIAMOND);
 		registerItemModel(ModItems.UNCUT_EMERALD);
+		registerItemModel(ModItems.CHISEL);
 		registerBlockModel(ModBlocks.HARD_STONE);
 		registerBlockModel(ModBlocks.HARD_GRANITE);
 		registerBlockModel(ModBlocks.HARD_DIORITE);
@@ -68,6 +70,9 @@ public class ClientProxy extends CommonProxy {
 		}
 		if(DivergentUnderground.Forestryenabled){
 			ForestryCompat.registerModels(event);
+		}
+		if(DivergentUnderground.IndustrialCraftenabled){
+			IndustrialCraftCompat.registerModels(event);
 		}
 	}
 	

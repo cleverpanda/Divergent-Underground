@@ -1,0 +1,21 @@
+{    
+    "conditions": [{
+        "type": "minecraft:item_exists",
+        "item": "biomesoplenty:gem"
+    }],
+   "type":"divergentunderground:shapeless_tool",
+   "ingredients":[  
+      {  
+         "item":"divergentunderground:gem_raw_bop_peridot"
+      },
+      {  
+       "type":"forge:ore_dict",
+		"ore":"toolChisel"
+      }
+   ],
+   "result":{  
+      "item":"biomesoplenty:gem",
+      "count":1,
+	  "data":2
+   }
+}

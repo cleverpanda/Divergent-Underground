@@ -43,18 +43,18 @@ public final class ModBlocks {
 	public static final Block HARD_REDSTONE = simply(new BlockHardStone(Blocks.REDSTONE_ORE.getDefaultState(),1),"hard_redstone_ore");
 	
 	
-	public static final Block GRANITE_COBBLE = simply(new Block(Material.ROCK),"granite_cobblestone");
-	public static final Block ANDESITE_COBBLE = simply(new Block(Material.ROCK),"andesite_cobblestone");
-	public static final Block DIORITE_COBBLE = simply(new Block(Material.ROCK),"diorite_cobblestone");
+	public static final Block GRANITE_COBBLE = simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),"granite_cobblestone");
+	public static final Block ANDESITE_COBBLE = simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),"andesite_cobblestone");
+	public static final Block DIORITE_COBBLE = simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),"diorite_cobblestone");
 	
 	
 	private static Block simply(Block block, String name) {
-		return block.setRegistryName(DivergentUnderground.MODID, name).setUnlocalizedName(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
+		return block.setRegistryName(DivergentUnderground.MODID, name).setTranslationKey(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
 	}
 
 	public static Block simply(BlockHardStone block, String name) {
 		hardStones.add((BlockHardStone) block);
-		return block.setRegistryName(DivergentUnderground.MODID, name).setUnlocalizedName(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
+		return block.setRegistryName(DivergentUnderground.MODID, name).setTranslationKey(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
 	}
 
 	@SubscribeEvent

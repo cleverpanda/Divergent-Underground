@@ -7,6 +7,7 @@ import java.util.Random;
 import akka.japi.Pair;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -15,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.storage.ExtendedBlockStorage;
@@ -22,9 +24,11 @@ import net.minecraftforge.event.entity.player.PlayerEvent.BreakSpeed;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.oredict.OreDictionary;
 import panda.divergentunderground.ConfigDivergentUnderground;
 import panda.divergentunderground.DivergentUnderground;
 import panda.divergentunderground.common.blocks.BlockHardStone;
@@ -210,5 +214,28 @@ public class EventsHandler {
 				}
 			}
 	    }
-
+		
+		@SubscribeEvent(priority = EventPriority.LOWEST)
+		public void onCraft(ItemCraftedEvent event) {
+			World world = event.player.world;
+			ItemStack itemstack = event.crafting;
+			if(world.isRemote) return;
+			for(String name : OreDictionary.getOreNames()){
+        		if(!name.startsWith("gem")) continue;
+        		for(ItemStack orestack : OreDictionary.getOres(name)){
+        			if(orestack.getItem() == itemstack.getItem()){
+        				
+        				
+        				int amount = world.rand.nextInt(2)+1;
+        				while (amount > 0)
+        	            {
+        	                int i = EntityXPOrb.getXPSplit(amount);
+        	                amount -= i;
+        	                world.spawnEntity(new EntityXPOrb(world,event.player.posX, event.player.posY+1f, event.player.posZ, i));
+        	            }
+        				return;
+            		}
+        		}
+        	}
+		}
 }

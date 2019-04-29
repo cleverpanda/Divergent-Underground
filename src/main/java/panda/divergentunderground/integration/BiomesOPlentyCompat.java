@@ -46,7 +46,6 @@ public class BiomesOPlentyCompat {
 	public static final Block HARD_AMBER = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(7),2),"bop_hard_amber_ore");
 	public static final Item GEM_AMBER = ModItems.makeGem("bop_amber");
 	
-
 	public static void init(){
 		
 			RockRegistry.addRock(BOPBlocks.gem_ore,0, ModItems.ROCK_ENDSTONE);

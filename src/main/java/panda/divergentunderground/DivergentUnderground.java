@@ -32,10 +32,10 @@ import net.minecraftforge.common.config.Configuration;
 
 
 @Mod(modid = DivergentUnderground.MODID, name = DivergentUnderground.NAME, version = DivergentUnderground.VERSION,
-dependencies = "after:thermalfoundation@[2.4,);"+ "after:cofhworld;"+ "after:thermalexpansion;")
+dependencies = "after:thermalfoundation;"+ "after:cofhworld;"+ "after:thermalexpansion;"+ "after:ic2;"+ "after:forestry;"+ "after:immersiveengineering;")
 public class DivergentUnderground {
 	public static final String MODID = "divergentunderground";
-	public static final String VERSION = "0.50.0";
+	public static final String VERSION = "0.52.1";
 	public static final String NAME = "Divergent Underground";
 	public static SimpleNetworkWrapper wrapper;
 	
@@ -61,8 +61,6 @@ public class DivergentUnderground {
 		
 		GameRegistry.registerWorldGenerator(new StoneGenerator(), Integer.MAX_VALUE);
 		MinecraftForge.EVENT_BUS.register(new EventsHandler());
-		
-		
 	}
 	
 	@EventHandler
@@ -100,14 +98,14 @@ public class DivergentUnderground {
 		Thermalenabled = Loader.isModLoaded("thermalfoundation");
 		BOPenabled = Loader.isModLoaded("biomesoplenty");
 		Forestryenabled = Loader.isModLoaded("forestry");
-		IndustrialCraftenabled = Loader.isModLoaded("industrialcraft");
+		IndustrialCraftenabled = Loader.isModLoaded("ic2");
 		ImmersiveEngineeringenabled = Loader.isModLoaded("immersiveengineering");
 
 	  }
 	
 	public static final CreativeTabs Tab = new CreativeTabs(DivergentUnderground.MODID) {
 		@Override
-		public ItemStack getTabIconItem() {
+		public ItemStack createIcon() {
 			return new ItemStack(ModItems.ORE_IRON);
 		}
 	};

@@ -1,5 +1,6 @@
 package panda.divergentunderground.proxy;
 
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import panda.divergentunderground.DivergentUnderground;
@@ -18,6 +19,7 @@ public class CommonProxy {
 	}
     
     public void registerOreDicts(){
+    	OreDictionary.registerOre("toolChisel",new ItemStack(ModItems.CHISEL,1,OreDictionary.WILDCARD_VALUE));
     	OreDictionary.registerOre("oreIron", ModBlocks.HARD_IRON);
     	OreDictionary.registerOre("oreGold", ModBlocks.HARD_GOLD);	
     	OreDictionary.registerOre("oreCoal", ModBlocks.HARD_COAL);
@@ -51,7 +53,7 @@ public class CommonProxy {
     	OreDictionary.registerOre("rockSandstone",ModItems.ROCK_RED_SANDSTONE);
     	OreDictionary.registerOre("rockSandstone",ModItems.ROCK_SANDSTONE);
     	
-    	OreDictionary.registerOre("rockOreCopper",ModItems.ORE_COPPER);
+    	//OreDictionary.registerOre("rockOreCopper",ModItems.ORE_COPPER);
     	OreDictionary.registerOre("rockOreGold",ModItems.ORE_GOLD);
     	OreDictionary.registerOre("rockOreIron",ModItems.ORE_IRON);
     	

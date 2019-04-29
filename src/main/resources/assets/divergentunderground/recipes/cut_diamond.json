@@ -1,0 +1,17 @@
+{    
+
+   "type":"divergentunderground:shapeless_tool",
+   "ingredients":[  
+      {  
+         "item":"divergentunderground:gem_raw_diamond"
+      },
+      {  
+       "type":"forge:ore_dict",
+	"ore":"toolChisel"
+      }
+   ],
+   "result":{  
+      "item":"minecraft:diamond",
+      "count":1
+   }
+}

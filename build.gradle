@@ -44,34 +44,37 @@ repositories {
 }
 
 dependencies {
-deobfCompile "codechicken:CodeChickenLib:1.12.2-3.1.7.+:universal"
+deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.2.+:universal"
 
-deobfCompile ("cofh:CoFHCore:1.12.2-4.3.5.13:universal") {
+deobfCompile ("cofh:CoFHCore:1.12.2-4.6.2.+:universal") {
     exclude group: 'mezz.jei'
   }
-  deobfCompile ("cofh:ThermalFoundation:1.12.2-2.4.+:universal") {
+  deobfCompile ("cofh:ThermalFoundation:1.12.2-2.6.2.+:universal") {
     exclude group: 'mezz.jei'
   }
-  deobfCompile ("cofh:ThermalExpansion:1.12.2-5.4.+:universal") {
+  deobfCompile ("cofh:ThermalExpansion:1.12.2-5.5.3.+:universal") {
     exclude group: 'mezz.jei'
   }
-  deobfCompile ("cofh:CoFHWorld:1.12.2-1.1.1.+:universal") {
+  deobfCompile ("cofh:RedstoneFlux:1.12-2.1.0.7+:universal") {
     exclude group: 'mezz.jei'
   }
-  deobfCompile ("com.github.glitchfiend.biomesoplenty:BiomesOPlenty:1.12.2-7.0.1.2344:deobf")
+  deobfCompile ("cofh:CoFHWorld:1.12.2-1.3.0.6+:universal") {
+    exclude group: 'mezz.jei'
+  }
+  deobfCompile ("com.github.glitchfiend.biomesoplenty:BiomesOPlenty:1.12.2-7.0.1.2426:universal")
   
-  deobfCompile("net.sengir.forestry:forestry_1.12.2:5.8.0.255") {
+  deobfCompile("net.sengir.forestry:forestry_1.12.2:5.8.1.322") {
             transitive = false
         }
 		
-  deobfCompile("net.industrial-craft:industrialcraft-2:2.8.75-ex112")
-  deobfCompile("blusunrize:ImmersiveEngineering:0.12-82-381:deobf")
+  deobfCompile("net.industrial-craft:industrialcraft-2:2.8.73-ex112")
+  deobfCompile("blusunrize:ImmersiveEngineering:0.12-89-518:deobf")
 }
 
 minecraft {
-    version = "1.12.2-14.23.3.2655"
+    version = "1.12.2-14.23.5.2768"
     runDir = "run"
-    mappings = "snapshot_20180322"
+    mappings = "stable_39"
 	
 	replace '@FINGERPRINT@', project.findProperty('signSHA1')
 	

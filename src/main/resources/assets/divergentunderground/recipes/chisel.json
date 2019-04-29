@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "divergentunderground:chisel",
+	"count": 1
+  },
+  "pattern": [
+    " I",
+    "S "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  }
+}

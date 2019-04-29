@@ -1,0 +1,5 @@
+{
+  "recipes": {
+    "shapeless_tool": "panda.divergentunderground.common.crafting.RecipeShapelessTool"
+  }
+}

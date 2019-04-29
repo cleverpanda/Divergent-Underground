@@ -30,8 +30,12 @@ public class ForestryCompat {
 	public static void init(){
 
 		RockRegistry.addRock(ModuleCore.getBlocks().resources,0, ModItems.ROCK_STONE);
-		OreRegistry.addOre(ModuleCore.getBlocks().resources,1,  ModItems.ROCK_STONE);	
-		OreRegistry.addOre(ModuleCore.getBlocks().resources,2,  ModItems.ROCK_STONE);
+		RockRegistry.addRock(ModuleCore.getBlocks().resources,1,  ModItems.ROCK_STONE);	
+		RockRegistry.addRock(ModuleCore.getBlocks().resources,2,  ModItems.ROCK_STONE);
+		
+		OreRegistry.addOre(ModuleCore.getBlocks().resources,0,  ModuleCore.getItems().apatite);
+		OreRegistry.addOre(ModuleCore.getBlocks().resources,1,  ORE_COPPER);	
+		OreRegistry.addOre(ModuleCore.getBlocks().resources,2,  ORE_TIN);
 
 		GameRegistry.addSmelting(ORE_COPPER, ModuleCore.getItems().ingotCopper, 0.5F);
 		GameRegistry.addSmelting(ORE_TIN, ModuleCore.getItems().ingotTin, 0.5F);

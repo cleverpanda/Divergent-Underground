@@ -9,6 +9,7 @@ import net.minecraft.world.WorldServer;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
+import panda.divergentunderground.DivergentUnderground;
 import panda.divergentunderground.common.blocks.BlockHardStone;
 import panda.divergentunderground.init.ModBlocks;
 
@@ -30,6 +31,9 @@ public class StoneGenerator implements IWorldGenerator {
 	
 					for(BlockHardStone hardstone : ModBlocks.hardStones){
 						if(hardstone.doStoneReplace(state, world, pos, y, y1)){
+							if(state.getBlock().getRegistryName().getNamespace().equals("quark")){
+								DivergentUnderground.logger.info(state);
+							}
 							break;
 						}
 					}                	

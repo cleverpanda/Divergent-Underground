@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import panda.divergentunderground.DivergentUnderground;
+import panda.divergentunderground.common.items.ItemChisel;
 import panda.divergentunderground.integration.BiomesOPlentyCompat;
 import panda.divergentunderground.integration.ForestryCompat;
 import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
@@ -22,7 +23,7 @@ public final class ModItems {
 
 	public static final Item ORE_GOLD = makeOre("gold");
 	public static final Item ORE_IRON = makeOre("iron");
-	public static final Item ORE_COPPER = makeOre("copper");
+	//public static final Item ORE_COPPER = makeOre("copper");
 	
 	public static final Item ROCK_ANDESITE = makeRock("andesite");
 	public static final Item ROCK_DIORITE = makeRock("diorite");
@@ -35,6 +36,7 @@ public final class ModItems {
 	
 	public static final Item UNCUT_EMERALD = makeGem("emerald");
 	public static final Item UNCUT_DIAMOND = makeGem("diamond");
+	public static final Item CHISEL = simply(new ItemChisel(),"chisel");
 
 	public static Item makeOre(String key){
 		return simply(new Item(), "ore_"+key);
@@ -49,7 +51,7 @@ public final class ModItems {
 	}
 	
 	private static Item simply(Item item, String name) { 
-		return item.setRegistryName(DivergentUnderground.MODID, name).setUnlocalizedName(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
+		return item.setRegistryName(DivergentUnderground.MODID, name).setTranslationKey(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
 	}
 
 	@SubscribeEvent
@@ -66,9 +68,10 @@ public final class ModItems {
 		registry.register(ROCK_ENDSTONE);
 		registry.register(ORE_GOLD);
 		registry.register(ORE_IRON);
-		registry.register(ORE_COPPER);
+		//registry.register(ORE_COPPER);
 		registry.register(UNCUT_EMERALD);
 		registry.register(UNCUT_DIAMOND);
+		registry.register(CHISEL);
 		
 		registerItemBlock(registry, ModBlocks.HARD_STONE);
 		registerItemBlock(registry, ModBlocks.HARD_GRANITE);

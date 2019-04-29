@@ -73,7 +73,7 @@ public class ModRecipes {
 	    if (recipe != null)
 	    {
 	    	DivergentUnderground.logger.info("Removing Recipe: " + name);
-	      ForgeRegistries.RECIPES.register(new FakeRecipe(recipe));
+	        ForgeRegistries.RECIPES.register(new FakeRecipe(recipe));
 	    }
 	  }
 
