@@ -22,28 +22,28 @@ import panda.divergentunderground.registries.RockRegistry;
 
 public class BiomesOPlentyCompat {
 
-	public static final Block HARD_AMETHYST = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(0),2),"bop_hard_amethyst_ore");
+	public static final Block HARD_AMETHYST = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(0),2,"biomesoplenty:blocks/peridot_ore"),"bop_hard_amethyst_ore");
 	public static final Item GEM_AMETHYST = ModItems.makeGem("bop_amethyst");
 	
-	public static final Block HARD_RUBY = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(1),2),"bop_hard_ruby_ore");
+	public static final Block HARD_RUBY = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(1),2,"biomesoplenty:blocks/ruby_ore"),"bop_hard_ruby_ore");
 	public static final Item GEM_RUBY = ModItems.makeGem("bop_ruby");
 	
-	public static final Block HARD_PERIDOT = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(2),2),"bop_hard_peridot_ore");
+	public static final Block HARD_PERIDOT = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(2),2,"biomesoplenty:blocks/peridot_ore"),"bop_hard_peridot_ore");
 	public static final Item GEM_PERIDOT = ModItems.makeGem("bop_peridot");
 	
-	public static final Block HARD_TOPAZ = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(3),2),"bop_hard_topaz_ore");
+	public static final Block HARD_TOPAZ = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(3),2,"biomesoplenty:blocks/topaz_ore"),"bop_hard_topaz_ore");
 	public static final Item GEM_TOPAZ = ModItems.makeGem("bop_topaz");
 	
-	public static final Block HARD_TANZANITE = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(4),2),"bop_hard_tanzanite_ore");
+	public static final Block HARD_TANZANITE = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(4),2,"biomesoplenty:blocks/tanzanite_ore"),"bop_hard_tanzanite_ore");
 	public static final Item GEM_TANZANITE = ModItems.makeGem("bop_tanzanite");
 	
-	public static final Block HARD_MALACHITE = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(5),2),"bop_hard_malachite_ore");
+	public static final Block HARD_MALACHITE = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(5),2,"biomesoplenty:blocks/malachite_ore"),"bop_hard_malachite_ore");
 	public static final Item GEM_MALACHITE = ModItems.makeGem("bop_malachite");
 	
-	public static final Block HARD_SAPPHIRE = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(6),2),"bop_hard_sapphire_ore");
+	public static final Block HARD_SAPPHIRE = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(6),2,"biomesoplenty:blocks/sapphire_ore"),"bop_hard_sapphire_ore");
 	public static final Item GEM_SAPPHIRE = ModItems.makeGem("bop_sapphire");
 	
-	public static final Block HARD_AMBER = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(7),2),"bop_hard_amber_ore");
+	public static final Block HARD_AMBER = ModBlocks.simply(new BlockHardStone(BOPBlocks.gem_ore.getStateFromMeta(7),2,"biomesoplenty:blocks/amber_ore"),"bop_hard_amber_ore");
 	public static final Item GEM_AMBER = ModItems.makeGem("bop_amber");
 	
 	public static void init(){

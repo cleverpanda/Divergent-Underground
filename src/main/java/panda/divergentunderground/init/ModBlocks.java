@@ -30,18 +30,18 @@ public final class ModBlocks {
 	public static List<BlockHardStone> hardStones = new ArrayList<>();
 	
 	
-	public static final Block HARD_STONE = simply(new BlockHardStone(Blocks.STONE.getDefaultState(),0),"hard_stone");
-	public static final Block HARD_GRANITE = simply(new BlockHardStone(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.GRANITE),0),"hard_granite");
-	public static final Block HARD_DIORITE = simply(new BlockHardStone(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.DIORITE),0),"hard_diorite");
-	public static final Block HARD_ANDESITE = simply(new BlockHardStone(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.ANDESITE),0),"hard_andesite");
+	public static final Block HARD_STONE = simply(new BlockHardStone(Blocks.STONE.getDefaultState(),0,"blocks/stone"),"hard_stone");
+	public static final Block HARD_GRANITE = simply(new BlockHardStone(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.GRANITE),0,"blocks/stone_granite"),"hard_granite");
+	public static final Block HARD_DIORITE = simply(new BlockHardStone(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.DIORITE),0,"blocks/stone_diorite"),"hard_diorite");
+	public static final Block HARD_ANDESITE = simply(new BlockHardStone(Blocks.STONE.getDefaultState().withProperty(BlockStone.VARIANT, BlockStone.EnumType.ANDESITE),0,"blocks/stone_andesite"),"hard_andesite");
 	
-	public static final Block HARD_IRON = simply(new BlockHardStone(Blocks.IRON_ORE.getDefaultState(),1),"hard_iron_ore");
-	public static final Block HARD_GOLD = simply(new BlockHardStone(Blocks.GOLD_ORE.getDefaultState(),1),"hard_gold_ore");
-	public static final Block HARD_COAL = simply(new BlockHardStone(Blocks.COAL_ORE.getDefaultState(),1),"hard_coal_ore");
-	public static final Block HARD_DIAMOND = simply(new BlockHardStone(Blocks.DIAMOND_ORE.getDefaultState(),2),"hard_diamond_ore");
-	public static final Block HARD_EMERALD = simply(new BlockHardStone(Blocks.EMERALD_ORE.getDefaultState(),2),"hard_emerald_ore");
-	public static final Block HARD_LAPIS = simply(new BlockHardStone(Blocks.LAPIS_ORE.getDefaultState(),1),"hard_lapis_ore");
-	public static final Block HARD_REDSTONE = simply(new BlockHardStone(Blocks.REDSTONE_ORE.getDefaultState(),1),"hard_redstone_ore");
+	public static final Block HARD_IRON = simply(new BlockHardStone(Blocks.IRON_ORE.getDefaultState(),1,"blocks/iron_ore"),"hard_iron_ore");
+	public static final Block HARD_GOLD = simply(new BlockHardStone(Blocks.GOLD_ORE.getDefaultState(),1,"blocks/gold_ore"),"hard_gold_ore");
+	public static final Block HARD_COAL = simply(new BlockHardStone(Blocks.COAL_ORE.getDefaultState(),1,"blocks/coal_ore"),"hard_coal_ore");
+	public static final Block HARD_DIAMOND = simply(new BlockHardStone(Blocks.DIAMOND_ORE.getDefaultState(),2,"blocks/diamond_ore"),"hard_diamond_ore");
+	public static final Block HARD_EMERALD = simply(new BlockHardStone(Blocks.EMERALD_ORE.getDefaultState(),2,"blocks/emerald_ore"),"hard_emerald_ore");
+	public static final Block HARD_LAPIS = simply(new BlockHardStone(Blocks.LAPIS_ORE.getDefaultState(),1,"blocks/lapis_ore"),"hard_lapis_ore");
+	public static final Block HARD_REDSTONE = simply(new BlockHardStone(Blocks.REDSTONE_ORE.getDefaultState(),1,"blocks/redstone_ore"),"hard_redstone_ore");
 	
 	
 	public static final Block GRANITE_COBBLE = simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),"granite_cobblestone");

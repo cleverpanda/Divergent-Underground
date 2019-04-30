@@ -22,6 +22,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import panda.divergentunderground.ConfigDivergentUnderground;
@@ -45,7 +46,8 @@ public class BlockHardStone extends BlockOre {
 	
 	private IBlockState alias;
 	private int type;//0 = rock,1 = ore, 2= gem
-	public BlockHardStone(IBlockState replacement,int type) {
+	public String textureLocation;
+	public BlockHardStone(IBlockState replacement,int type,String texture) {
 		super();
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DEPTH, 0));
 		alias = replacement;
@@ -54,6 +56,7 @@ public class BlockHardStone extends BlockOre {
         setResistance(10.0F);
         setSoundType(SoundType.STONE);
         this.setHarvestLevel("pickaxe", 0);
+        this.textureLocation = texture;
 	}
 	
 	@Override
@@ -126,6 +129,18 @@ public class BlockHardStone extends BlockOre {
     }
 
 	@Override
+	public void onExplosionDestroy(World worldIn, BlockPos pos, Explosion explosionIn) {
+		// TODO Auto-generated method stub
+		super.onExplosionDestroy(worldIn, pos, explosionIn);
+	}
+
+	@Override
+	public void onBlockExploded(World world, BlockPos pos, Explosion explosion) {
+		// TODO Auto-generated method stub
+		super.onBlockExploded(world, pos, explosion);
+	}
+
+	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		Random rand = ((World)world).rand;
 		if(this.type == 1 || !ConfigDivergentUnderground.doGemDrops){
@@ -152,7 +167,7 @@ public class BlockHardStone extends BlockOre {
 			}
 		}else
 			if(this.type == 2){
-				alias.getBlock().getDrops(drops, world, pos, state, fortune);
+				alias.getBlock().getDrops(drops, world, pos, alias, fortune);
 				
 				for(int i = 0; i < drops.size(); i++){
 					ItemStack stack = drops.get(i);
@@ -212,7 +227,7 @@ public class BlockHardStone extends BlockOre {
     @Override
     public int damageDropped(IBlockState state)
     {
-        return alias.getBlock().getMetaFromState(alias);
+        return 0;
     }
     
     @Override

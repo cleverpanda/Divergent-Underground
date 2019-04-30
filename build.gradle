@@ -78,10 +78,14 @@ deobfCompile ("cofh:CoFHCore:1.12.2-4.6.2.+:universal") {
   
   deobfCompile("net.sengir.forestry:forestry_1.12.2:5.8.1.322")
 		
-  deobfCompile("net.industrial-craft:industrialcraft-2:2.8.73-ex112")
+  compileOnly("net.industrial-craft:industrialcraft-2:2.8.134-ex112")
   deobfCompile("blusunrize:ImmersiveEngineering:0.12-89-518:deobf")
   deobfCompile("com.mod-buildcraft:buildcraft-api:7.99.17")
-  deobfCompile("mekanism:Mekanism:1.12.2:9.7.2.373")
+    deobfProvided ("mekanism:Mekanism:1.12.2:9.7.2.373") {
+        exclude group: 'MCMultiPart'
+        exclude group: 'mezz.jei'
+    }
+  deobfCompile("appeng:appliedenergistics2:rv6-stable-6")
 }
 
 minecraft {

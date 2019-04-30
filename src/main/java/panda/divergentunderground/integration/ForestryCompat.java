@@ -17,12 +17,12 @@ import panda.divergentunderground.registries.RockRegistry;
 
 public class ForestryCompat {
 	
-	public static final Block HARD_APATITE = ModBlocks.simply(new BlockHardStone(ModuleCore.getBlocks().resources.getStateFromMeta(0),1),"forestry_hard_apatite_ore");
+	public static final Block HARD_APATITE = ModBlocks.simply(new BlockHardStone(ModuleCore.getBlocks().resources.getStateFromMeta(0),1,"forestry:blocks/ores/apatite"),"forestry_hard_apatite_ore");
 	
-	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(ModuleCore.getBlocks().resources.getStateFromMeta(1),1),"forestry_hard_copper_ore");
+	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(ModuleCore.getBlocks().resources.getStateFromMeta(1),1,"forestry:blocks/ores/copper"),"forestry_hard_copper_ore");
 	public static final Item ORE_COPPER = ModItems.makeOre("forestry_copper");
 
-	public static final Block HARD_TIN = ModBlocks.simply(new BlockHardStone(ModuleCore.getBlocks().resources.getStateFromMeta(2),1),"forestry_hard_tin_ore");
+	public static final Block HARD_TIN = ModBlocks.simply(new BlockHardStone(ModuleCore.getBlocks().resources.getStateFromMeta(2),1,"forestry:blocks/ores/tin"),"forestry_hard_tin_ore");
 	public static final Item ORE_TIN = ModItems.makeOre("forestry_tin");
 	
 

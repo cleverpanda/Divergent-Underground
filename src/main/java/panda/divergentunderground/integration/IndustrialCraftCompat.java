@@ -24,11 +24,11 @@ public class IndustrialCraftCompat {
 	//@ObjectHolder("ic2:resource") 
 	public static final Block IC2_BLOCK = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("ic2:resource"));
 	
-	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(IC2_BLOCK.getStateFromMeta(1),1),"ic2_hard_copper_ore");
-	public static final Block HARD_LEAD = ModBlocks.simply(new BlockHardStone(IC2_BLOCK.getStateFromMeta(2),1),"ic2_hard_lead_ore");
-	public static final Block HARD_TIN = ModBlocks.simply(new BlockHardStone(IC2_BLOCK.getStateFromMeta(3),1),"ic2_hard_tin_ore");
+	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(IC2_BLOCK.getStateFromMeta(1),1,"ic2:blocks/resource/copper_ore"),"ic2_hard_copper_ore");
+	public static final Block HARD_LEAD = ModBlocks.simply(new BlockHardStone(IC2_BLOCK.getStateFromMeta(2),1,"ic2:blocks/resource/lead_ore"),"ic2_hard_lead_ore");
+	public static final Block HARD_TIN = ModBlocks.simply(new BlockHardStone(IC2_BLOCK.getStateFromMeta(3),1,"ic2:blocks/resource/tin_ore"),"ic2_hard_tin_ore");
 
-	public static final Block HARD_URANIUM = ModBlocks.simply(new BlockHardStone(IC2_BLOCK.getStateFromMeta(4),1),"ic2_hard_uranium_ore");
+	public static final Block HARD_URANIUM = ModBlocks.simply(new BlockHardStone(IC2_BLOCK.getStateFromMeta(4),1,"ic2:blocks/resource/uranium_ore"),"ic2_hard_uranium_ore");
 	
 	public static final Item ORE_COPPER = ModItems.makeOre("ic2_copper");
 	public static final Item ORE_TIN = ModItems.makeOre("ic2_tin");

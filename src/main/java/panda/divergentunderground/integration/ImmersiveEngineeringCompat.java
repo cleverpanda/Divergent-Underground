@@ -19,22 +19,22 @@ import panda.divergentunderground.registries.RockRegistry;
 
 public class ImmersiveEngineeringCompat {
 
-	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.COPPER.getMeta()),BlockTypes_Ore.COPPER.getMeta()),"ie_hard_copper_ore");
+	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.COPPER.getMeta()),BlockTypes_Ore.COPPER.getMeta(),"immersiveengineering:blocks/ore_copper"),"ie_hard_copper_ore");
 	public static final Item ORE_COPPER = ModItems.makeOre("ie_copper");
 
-	public static final Block HARD_ALUMINUM = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.ALUMINUM.getMeta()),BlockTypes_Ore.ALUMINUM.getMeta()),"ie_hard_aluminum_ore");
+	public static final Block HARD_ALUMINUM = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.ALUMINUM.getMeta()),BlockTypes_Ore.ALUMINUM.getMeta(),"immersiveengineering:blocks/ore_aluminum"),"ie_hard_aluminum_ore");
 	public static final Item ORE_ALUMINUM = ModItems.makeOre("ie_aluminum");
 	
-	public static final Block HARD_LEAD = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.LEAD.getMeta()),BlockTypes_Ore.LEAD.getMeta()),"ie_hard_lead_ore");
+	public static final Block HARD_LEAD = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.LEAD.getMeta()),BlockTypes_Ore.LEAD.getMeta(),"immersiveengineering:blocks/ore_lead"),"ie_hard_lead_ore");
 	public static final Item ORE_LEAD = ModItems.makeOre("ie_lead");
 	
-	public static final Block HARD_SILVER = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.SILVER.getMeta()),BlockTypes_Ore.SILVER.getMeta()),"ie_hard_silver_ore");
+	public static final Block HARD_SILVER = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.SILVER.getMeta()),BlockTypes_Ore.SILVER.getMeta(),"immersiveengineering:blocks/ore_silver"),"ie_hard_silver_ore");
 	public static final Item ORE_SILVER = ModItems.makeOre("ie_silver");
 	
-	public static final Block HARD_NICKEL = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.NICKEL.getMeta()),BlockTypes_Ore.NICKEL.getMeta()),"ie_hard_nickel_ore");
+	public static final Block HARD_NICKEL = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.NICKEL.getMeta()),BlockTypes_Ore.NICKEL.getMeta(),"immersiveengineering:blocks/ore_nickel"),"ie_hard_nickel_ore");
 	public static final Item ORE_NICKEL = ModItems.makeOre("ie_nickel");
 	
-	public static final Block HARD_URANIUM = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.URANIUM.getMeta()),BlockTypes_Ore.URANIUM.getMeta()),"ie_hard_uranium_ore");
+	public static final Block HARD_URANIUM = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.URANIUM.getMeta()),BlockTypes_Ore.URANIUM.getMeta(),"immersiveengineering:blocks/ore_uranium"),"ie_hard_uranium_ore");
 	public static final Item ORE_URANIUM = ModItems.makeOre("ie_uranium");
 	
 	

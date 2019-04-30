@@ -37,7 +37,7 @@ import net.minecraftforge.common.config.Configuration;
 dependencies = "after:thermalfoundation;"+ "after:cofhworld;"+ "after:thermalexpansion;"+ "after:ic2;"+ "after:mekanism;"+ "after:forestry;"+ "after:immersiveengineering;")
 public class DivergentUnderground {
 	public static final String MODID = "divergentunderground";
-	public static final String VERSION = "0.52.4";
+	public static final String VERSION = "0.53.0";
 	public static final String NAME = "Divergent Underground";
 	public static SimpleNetworkWrapper wrapper;
 	

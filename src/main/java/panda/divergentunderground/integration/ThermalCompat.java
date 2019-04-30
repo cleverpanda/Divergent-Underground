@@ -26,31 +26,31 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ThermalCompat {
 	
-	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(0),1),"thermal_hard_copper_ore");
+	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(0),1,"thermalfoundation:blocks/ore/ore_copper"),"thermal_hard_copper_ore");
 	public static final Item ORE_COPPER = ModItems.makeOre("thermal_copper");
 	
-	public static final Block HARD_TIN = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(1),1),"thermal_hard_tin_ore");
+	public static final Block HARD_TIN = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(1),1,"thermalfoundation:blocks/ore/ore_tin"),"thermal_hard_tin_ore");
 	public static final Item ORE_TIN = ModItems.makeOre("thermal_tin");
 	
-	public static final Block HARD_SILVER = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(2),1),"thermal_hard_silver_ore");
+	public static final Block HARD_SILVER = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(2),1,"thermalfoundation:blocks/ore/ore_silver"),"thermal_hard_silver_ore");
 	public static final Item ORE_SILVER = ModItems.makeOre("thermal_silver");
 	
-	public static final Block HARD_LEAD = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(3),1),"thermal_hard_lead_ore");
+	public static final Block HARD_LEAD = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(3),1,"thermalfoundation:blocks/ore/ore_lead"),"thermal_hard_lead_ore");
 	public static final Item ORE_LEAD = ModItems.makeOre("thermal_lead");
 	
-	public static final Block HARD_ALUMINUM = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(4),1),"thermal_hard_aluminum_ore");
+	public static final Block HARD_ALUMINUM = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(4),1,"thermalfoundation:blocks/ore/ore_aluminum"),"thermal_hard_aluminum_ore");
 	public static final Item ORE_ALUMINUM = ModItems.makeOre("thermal_aluminum");
 	
-	public static final Block HARD_NICKEL = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(5),1),"thermal_hard_nickel_ore");
+	public static final Block HARD_NICKEL = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(5),1,"thermalfoundation:blocks/ore/ore_nickel"),"thermal_hard_nickel_ore");
 	public static final Item ORE_NICKEL = ModItems.makeOre("thermal_nickel");
 	
-	public static final Block HARD_PLATINUM = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(6),1),"thermal_hard_platinum_ore");
+	public static final Block HARD_PLATINUM = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(6),1,"thermalfoundation:blocks/ore/ore_platinum"),"thermal_hard_platinum_ore");
 	public static final Item ORE_PLATINUM = ModItems.makeOre("thermal_platinum");
 	
-	public static final Block HARD_IRIDIUM = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(7),1),"thermal_hard_iridium_ore");
+	public static final Block HARD_IRIDIUM = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(7),1,"thermalfoundation:blocks/ore/ore_iridium"),"thermal_hard_iridium_ore");
 	public static final Item ORE_IRIDIUM = ModItems.makeOre("thermal_iridium");
 	
-	public static final Block HARD_MITHRIL = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(8),1),"thermal_hard_mithril_ore");
+	public static final Block HARD_MITHRIL = ModBlocks.simply(new BlockHardStone(TFBlocks.blockOre.getStateFromMeta(8),1,"thermalfoundation:blocks/ore/ore_aluminum"),"thermal_hard_mithril_ore");
 	public static final Item ORE_MITHRIL = ModItems.makeOre("thermal_mithril");
 	
 

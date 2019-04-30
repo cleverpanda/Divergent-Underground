@@ -27,9 +27,9 @@ public class MekanismCompat {
 	
 	public static final Block ORE_BLOCK = MekanismBlocks.OreBlock;
 	
-	public static final Block HARD_OSMIUM = ModBlocks.simply(new BlockHardStone(ORE_BLOCK.getStateFromMeta(0),1),"mekanism_hard_osmium_ore");
-	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(ORE_BLOCK.getStateFromMeta(1),1),"mekanism_hard_copper_ore");
-	public static final Block HARD_TIN = ModBlocks.simply(new BlockHardStone(ORE_BLOCK.getStateFromMeta(2),1),"mekanism_hard_tin_ore");
+	public static final Block HARD_OSMIUM = ModBlocks.simply(new BlockHardStone(ORE_BLOCK.getStateFromMeta(0),1,"mekanism:blocks/osmiumore"),"mekanism_hard_osmium_ore");
+	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(ORE_BLOCK.getStateFromMeta(1),1,"mekanism:blocks/copperore"),"mekanism_hard_copper_ore");
+	public static final Block HARD_TIN = ModBlocks.simply(new BlockHardStone(ORE_BLOCK.getStateFromMeta(2),1,"mekanism:blocks/tinore"),"mekanism_hard_tin_ore");
 
 	public static final Item ORE_OSMIUM = ModItems.makeOre("mekanism_osmium");
 	public static final Item ORE_COPPER = ModItems.makeOre("mekanism_copper");
