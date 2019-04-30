@@ -24,6 +24,10 @@ repositories {
 }
 
 repositories {
+    maven {
+        name = "CurseForge"
+        url = "https://minecraft.curseforge.com/api/maven/"
+    }
   maven {
     name 'IE Repo'
     url 'https://maven.blamejared.com/'
@@ -31,6 +35,10 @@ repositories {
   maven { // CoFH
     name 'Covers Maven'
     url 'http://maven.covers1624.net/'
+  }
+  maven {
+    name 'Nut boii'
+    url 'http://tehnut.info/maven'
   }
   maven { // CCL, CCC, NEI
     name 'Chickenbones Repo'
@@ -40,10 +48,15 @@ repositories {
     name = "ic2, forestry"
     url = "http://maven.ic2.player.to/"
   }
+
+  maven {
+    url = 'https://mod-buildcraft.com/maven'
+  }
   
 }
 
 dependencies {
+deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
 deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.2.+:universal"
 
 deobfCompile ("cofh:CoFHCore:1.12.2-4.6.2.+:universal") {
@@ -63,12 +76,12 @@ deobfCompile ("cofh:CoFHCore:1.12.2-4.6.2.+:universal") {
   }
   deobfCompile ("com.github.glitchfiend.biomesoplenty:BiomesOPlenty:1.12.2-7.0.1.2426:universal")
   
-  deobfCompile("net.sengir.forestry:forestry_1.12.2:5.8.1.322") {
-            transitive = false
-        }
+  deobfCompile("net.sengir.forestry:forestry_1.12.2:5.8.1.322")
 		
   deobfCompile("net.industrial-craft:industrialcraft-2:2.8.73-ex112")
   deobfCompile("blusunrize:ImmersiveEngineering:0.12-89-518:deobf")
+  deobfCompile("com.mod-buildcraft:buildcraft-api:7.99.17")
+  deobfCompile("mekanism:Mekanism:1.12.2:9.7.2.373")
 }
 
 minecraft {

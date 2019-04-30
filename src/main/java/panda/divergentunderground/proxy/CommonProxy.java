@@ -10,6 +10,7 @@ import panda.divergentunderground.integration.BiomesOPlentyCompat;
 import panda.divergentunderground.integration.ForestryCompat;
 import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
 import panda.divergentunderground.integration.IndustrialCraftCompat;
+import panda.divergentunderground.integration.MekanismCompat;
 import panda.divergentunderground.integration.ThermalCompat;
 
 public class CommonProxy {
@@ -20,6 +21,8 @@ public class CommonProxy {
     
     public void registerOreDicts(){
     	OreDictionary.registerOre("toolChisel",new ItemStack(ModItems.CHISEL,1,OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("oreIron", ModItems.ORE_IRON);
+		OreDictionary.registerOre("oreGold", ModItems.ORE_GOLD);
     	OreDictionary.registerOre("oreIron", ModBlocks.HARD_IRON);
     	OreDictionary.registerOre("oreGold", ModBlocks.HARD_GOLD);	
     	OreDictionary.registerOre("oreCoal", ModBlocks.HARD_COAL);
@@ -73,6 +76,9 @@ public class CommonProxy {
 		}
 		if(DivergentUnderground.IndustrialCraftenabled){
 			IndustrialCraftCompat.registerOreDicts();
+		}
+		if(DivergentUnderground.Mekanismenabled){
+			MekanismCompat.registerOreDicts();
 		}
     }
 }

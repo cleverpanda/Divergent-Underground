@@ -13,6 +13,7 @@ import panda.divergentunderground.integration.BiomesOPlentyCompat;
 import panda.divergentunderground.integration.ForestryCompat;
 import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
 import panda.divergentunderground.integration.IndustrialCraftCompat;
+import panda.divergentunderground.integration.MekanismCompat;
 import panda.divergentunderground.integration.ThermalCompat;
 
 
@@ -103,7 +104,9 @@ public final class ModItems {
 		if(DivergentUnderground.IndustrialCraftenabled){
 			IndustrialCraftCompat.registerItems(event);
 		}
-		
+		if(DivergentUnderground.Mekanismenabled){
+			MekanismCompat.registerItems(event);
+		}
 	}
 
 	public static void registerItemBlock(IForgeRegistry<Item> registry, Block block) {

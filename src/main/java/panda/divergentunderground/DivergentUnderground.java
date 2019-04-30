@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -23,6 +24,7 @@ import panda.divergentunderground.integration.BiomesOPlentyCompat;
 import panda.divergentunderground.integration.ForestryCompat;
 import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
 import panda.divergentunderground.integration.IndustrialCraftCompat;
+import panda.divergentunderground.integration.MekanismCompat;
 import panda.divergentunderground.integration.ThermalCompat;
 import panda.divergentunderground.proxy.CommonProxy;
 import panda.divergentunderground.registries.GemRegistry;
@@ -32,10 +34,10 @@ import net.minecraftforge.common.config.Configuration;
 
 
 @Mod(modid = DivergentUnderground.MODID, name = DivergentUnderground.NAME, version = DivergentUnderground.VERSION,
-dependencies = "after:thermalfoundation;"+ "after:cofhworld;"+ "after:thermalexpansion;"+ "after:ic2;"+ "after:forestry;"+ "after:immersiveengineering;")
+dependencies = "after:thermalfoundation;"+ "after:cofhworld;"+ "after:thermalexpansion;"+ "after:ic2;"+ "after:mekanism;"+ "after:forestry;"+ "after:immersiveengineering;")
 public class DivergentUnderground {
 	public static final String MODID = "divergentunderground";
-	public static final String VERSION = "0.52.1";
+	public static final String VERSION = "0.52.4";
 	public static final String NAME = "Divergent Underground";
 	public static SimpleNetworkWrapper wrapper;
 	
@@ -52,6 +54,7 @@ public class DivergentUnderground {
 	public static boolean Forestryenabled;
 	public static boolean IndustrialCraftenabled;
 	public static boolean ImmersiveEngineeringenabled;
+	public static boolean Mekanismenabled;
 	
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event){
@@ -84,6 +87,9 @@ public class DivergentUnderground {
 		if(DivergentUnderground.IndustrialCraftenabled){
 			IndustrialCraftCompat.init();
 		}
+		if(DivergentUnderground.Mekanismenabled){
+			MekanismCompat.init();
+		}
 		
 		proxy.registerColorHandlers();
 		proxy.registerOreDicts();
@@ -100,7 +106,7 @@ public class DivergentUnderground {
 		Forestryenabled = Loader.isModLoaded("forestry");
 		IndustrialCraftenabled = Loader.isModLoaded("ic2");
 		ImmersiveEngineeringenabled = Loader.isModLoaded("immersiveengineering");
-
+		Mekanismenabled = Loader.isModLoaded("mekanism");
 	  }
 	
 	public static final CreativeTabs Tab = new CreativeTabs(DivergentUnderground.MODID) {

@@ -83,6 +83,7 @@ public class IndustrialCraftCompat {
 
 	private static void doDicts(String type,Item ore, Block block){
 		OreDictionary.registerOre("ore"+type, block);
+		OreDictionary.registerOre("ore"+type, ore);
 		OreDictionary.registerOre("rockOre"+type,ore);
 	}
 

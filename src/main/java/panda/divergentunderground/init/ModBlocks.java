@@ -17,6 +17,7 @@ import panda.divergentunderground.integration.BiomesOPlentyCompat;
 import panda.divergentunderground.integration.ForestryCompat;
 import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
 import panda.divergentunderground.integration.IndustrialCraftCompat;
+import panda.divergentunderground.integration.MekanismCompat;
 import panda.divergentunderground.integration.ThermalCompat;
 
 
@@ -91,6 +92,10 @@ public final class ModBlocks {
 		if(DivergentUnderground.IndustrialCraftenabled){
 			IndustrialCraftCompat.registerBlocks(event);
 		}
+		if(DivergentUnderground.Mekanismenabled){
+			MekanismCompat.registerBlocks(event);
+		}
+		
 		
 		
 		

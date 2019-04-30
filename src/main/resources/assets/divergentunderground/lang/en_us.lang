@@ -91,6 +91,14 @@ tile.divergentunderground.ic2_hard_uranium_ore.name=Uranium Ore
 
 item.divergentunderground.ore_ic2_copper.name=Copper Ore
 item.divergentunderground.ore_ic2_tin.name=Tin Ore
-item.divergentunderground.ore_ic2_lead.name=CLead Ore
+item.divergentunderground.ore_ic2_lead.name=Lead Ore
 item.divergentunderground.ore_ic2_uranium.name=Uranium Ore
+
+tile.divergentunderground.mekanism_hard_copper_ore.name=Copper Ore
+tile.divergentunderground.mekanism_hard_tin_ore.name=Tin Ore
+tile.divergentunderground.mekanism_hard_osmium_ore.name=Osmium Ore
+
+item.divergentunderground.ore_mekanism_copper.name=Copper Ore
+item.divergentunderground.ore_mekanism_tin.name=Tin Ore
+item.divergentunderground.ore_mekanism_osmium.name=Osmium Ore
 
