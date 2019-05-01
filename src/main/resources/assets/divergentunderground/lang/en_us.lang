@@ -102,3 +102,16 @@ item.divergentunderground.ore_mekanism_copper.name=Copper Ore
 item.divergentunderground.ore_mekanism_tin.name=Tin Ore
 item.divergentunderground.ore_mekanism_osmium.name=Osmium Ore
 
+item.divergentunderground.rock_quark_limestone.name=Limestone Chunk
+item.divergentunderground.rock_quark_icystone.name=Permafrost Rock
+item.divergentunderground.rock_quark_firestone.name=Brimstone Rock
+item.divergentunderground.rock_quark_basalt.name=Basalt Rock
+item.divergentunderground.rock_quark_marble.name=Marble Rock
+
+tile.divergentunderground.quark_hard_marble_rock.name=Marble
+tile.divergentunderground.quark_hard_limestone_rock.name=Limestone
+
+tile.divergentunderground.quark_basalt_cobblestone.name=Basalt Cobblestone
+tile.divergentunderground.quark_limestone_cobblestone.name=Limestone Cobblestone
+tile.divergentunderground.quark_marble_cobblestone.name=Marble Cobblestone
+

@@ -1,0 +1,6 @@
+{
+    "parent": "divergentunderground:block/cube_all",
+    "textures": {
+        "all": "quark:blocks/stone_marble"
+    }
+}

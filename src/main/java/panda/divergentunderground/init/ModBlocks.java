@@ -6,6 +6,7 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -13,14 +14,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import panda.divergentunderground.DivergentUnderground;
 import panda.divergentunderground.common.blocks.BlockHardStone;
-import panda.divergentunderground.integration.BiomesOPlentyCompat;
-import panda.divergentunderground.integration.ForestryCompat;
-import panda.divergentunderground.integration.ImmersiveEngineeringCompat;
-import panda.divergentunderground.integration.IndustrialCraftCompat;
-import panda.divergentunderground.integration.MekanismCompat;
-import panda.divergentunderground.integration.ThermalCompat;
-
-
 
 @EventBusSubscriber
 public final class ModBlocks {
@@ -49,14 +42,25 @@ public final class ModBlocks {
 	public static final Block DIORITE_COBBLE = simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),"diorite_cobblestone");
 	
 	
-	private static Block simply(Block block, String name) {
+	public static Block simply(Block block, String name) {
 		return block.setRegistryName(DivergentUnderground.MODID, name).setTranslationKey(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
 	}
 
-	public static Block simply(BlockHardStone block, String name) {
+	private static Block simply(BlockHardStone block, String name) {
 		hardStones.add((BlockHardStone) block);
 		return block.setRegistryName(DivergentUnderground.MODID, name).setTranslationKey(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
 	}
+
+	public static Block makeHardBlock(IBlockState replacement,int type,String texture, String modid,String name) {
+		String end = "_rock";
+		//0 = rock,1 = ore, 2= gem
+		if(type > 0){
+			end = "_ore";
+		}
+		return simply(new BlockHardStone(replacement,type,texture),modid + "_hard_"+ name + end);
+	}
+	
+	
 
 	@SubscribeEvent
 	public static void register(RegistryEvent.Register<Block> event) {
@@ -75,31 +79,6 @@ public final class ModBlocks {
 		registry.register(HARD_REDSTONE);
 		registry.register(GRANITE_COBBLE);
 		registry.register(ANDESITE_COBBLE);
-		registry.register(DIORITE_COBBLE);
-		
-		if(DivergentUnderground.Thermalenabled){
-			ThermalCompat.registerBlocks(event);
-		}
-		if(DivergentUnderground.BOPenabled){
-			BiomesOPlentyCompat.registerBlocks(event);
-		}
-		if(DivergentUnderground.ImmersiveEngineeringenabled){
-			ImmersiveEngineeringCompat.registerBlocks(event);
-		}
-		if(DivergentUnderground.Forestryenabled){
-			ForestryCompat.registerBlocks(event);
-		}
-		if(DivergentUnderground.IndustrialCraftenabled){
-			IndustrialCraftCompat.registerBlocks(event);
-		}
-		if(DivergentUnderground.Mekanismenabled){
-			MekanismCompat.registerBlocks(event);
-		}
-		
-		
-		
-		
-
-		
+		registry.register(DIORITE_COBBLE);	
 	}
 }

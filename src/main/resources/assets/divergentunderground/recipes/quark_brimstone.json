@@ -1,0 +1,21 @@
+{
+    "conditions": [{
+        "type": "minecraft:item_exists",
+        "item": "quark:biome_cobblestone"
+    }],
+  "result": {
+    "item": "quark:biome_cobblestone",
+	"data": 0,
+	"count": 1
+  },
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "P": {
+      "item": "divergentunderground:rock_quark_firestone"
+    }
+  }
+}

@@ -8,10 +8,10 @@ import net.minecraft.block.BlockOre;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -22,9 +22,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import panda.divergentunderground.ConfigDivergentUnderground;
 import panda.divergentunderground.DivergentUnderground;
 import panda.divergentunderground.registries.GemRegistry;
@@ -39,7 +40,7 @@ public class BlockHardStone extends BlockOre {
 			worldIn.setBlockState(pos, state.cycleProperty(DEPTH));
 		}
 		
-		return super.onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+		return alias.getBlock().onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
 	}
 
 	public static final PropertyInteger DEPTH = PropertyInteger.create("hardness", 0,3);
@@ -119,26 +120,34 @@ public class BlockHardStone extends BlockOre {
 	@Override
 	public int quantityDropped(Random random)
     {
-		int count = 2 + random.nextInt(3);
-        return count < 5? count : 4;
+			int count = 2 + random.nextInt(3);
+			return count < 5? count : 4;
     }
 	@Override
     public int getExpDrop(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune)
     {if(this.type > 0){return 0;}
 		return alias.getBlock().getExpDrop(state, world, pos, fortune);
     }
+	
+	
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
+    {
+    	alias.getBlock().randomDisplayTick(stateIn, worldIn, pos, rand);
+    }
+    
+    @Override
+    public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn)
+    {
+        alias.getBlock().onBlockClicked(worldIn, pos, playerIn);
+    }
 
-	@Override
-	public void onExplosionDestroy(World worldIn, BlockPos pos, Explosion explosionIn) {
-		// TODO Auto-generated method stub
-		super.onExplosionDestroy(worldIn, pos, explosionIn);
-	}
-
-	@Override
-	public void onBlockExploded(World world, BlockPos pos, Explosion explosion) {
-		// TODO Auto-generated method stub
-		super.onBlockExploded(world, pos, explosion);
-	}
+    @Override
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
+    {
+        alias.getBlock().onEntityWalk(worldIn, pos, entityIn);
+    }
 
 	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {

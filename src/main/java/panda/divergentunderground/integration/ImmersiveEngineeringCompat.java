@@ -6,39 +6,54 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-import panda.divergentunderground.common.blocks.BlockHardStone;
+import panda.divergentunderground.DivergentUnderground;
+import panda.divergentunderground.experimental.CompatibilityPlugin;
+import panda.divergentunderground.experimental.ICompatibilityPlugin;
 import panda.divergentunderground.init.ModBlocks;
 import panda.divergentunderground.init.ModItems;
 import panda.divergentunderground.proxy.ClientProxy;
 import panda.divergentunderground.registries.OreRegistry;
 import panda.divergentunderground.registries.RockRegistry;
 
-public class ImmersiveEngineeringCompat {
+@CompatibilityPlugin("immersiveengineering")
+public class ImmersiveEngineeringCompat implements ICompatibilityPlugin {
 
-	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.COPPER.getMeta()),BlockTypes_Ore.COPPER.getMeta(),"immersiveengineering:blocks/ore_copper"),"ie_hard_copper_ore");
-	public static final Item ORE_COPPER = ModItems.makeOre("ie_copper");
+	private static final String texturePath = "immersiveengineering:blocks/";
+	private static final String id = "ie"; 
+	
+	
+	public static final Block HARD_COPPER = ModBlocks.makeHardBlock(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.COPPER.getMeta()),1,texturePath+"ore_copper",id,"copper");
+	public static final Item ORE_COPPER = ModItems.makeOre(id,"copper");
 
-	public static final Block HARD_ALUMINUM = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.ALUMINUM.getMeta()),BlockTypes_Ore.ALUMINUM.getMeta(),"immersiveengineering:blocks/ore_aluminum"),"ie_hard_aluminum_ore");
-	public static final Item ORE_ALUMINUM = ModItems.makeOre("ie_aluminum");
+	public static final Block HARD_ALUMINUM = ModBlocks.makeHardBlock(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.ALUMINUM.getMeta()),1,texturePath+"ore_aluminum",id,"aluminum");
+	public static final Item ORE_ALUMINUM = ModItems.makeOre(id,"aluminum");
 	
-	public static final Block HARD_LEAD = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.LEAD.getMeta()),BlockTypes_Ore.LEAD.getMeta(),"immersiveengineering:blocks/ore_lead"),"ie_hard_lead_ore");
-	public static final Item ORE_LEAD = ModItems.makeOre("ie_lead");
+	public static final Block HARD_LEAD = ModBlocks.makeHardBlock(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.LEAD.getMeta()),1,texturePath+"ore_lead",id,"lead");
+	public static final Item ORE_LEAD = ModItems.makeOre(id,"lead");
 	
-	public static final Block HARD_SILVER = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.SILVER.getMeta()),BlockTypes_Ore.SILVER.getMeta(),"immersiveengineering:blocks/ore_silver"),"ie_hard_silver_ore");
-	public static final Item ORE_SILVER = ModItems.makeOre("ie_silver");
+	public static final Block HARD_SILVER = ModBlocks.makeHardBlock(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.SILVER.getMeta()),1,texturePath+"ore_silver",id,"silver");
+	public static final Item ORE_SILVER = ModItems.makeOre(id,"silver");
 	
-	public static final Block HARD_NICKEL = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.NICKEL.getMeta()),BlockTypes_Ore.NICKEL.getMeta(),"immersiveengineering:blocks/ore_nickel"),"ie_hard_nickel_ore");
-	public static final Item ORE_NICKEL = ModItems.makeOre("ie_nickel");
+	public static final Block HARD_NICKEL = ModBlocks.makeHardBlock(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.NICKEL.getMeta()),1,texturePath+"ore_nickel",id,"nickel");
+	public static final Item ORE_NICKEL = ModItems.makeOre(id,"nickel");
 	
-	public static final Block HARD_URANIUM = ModBlocks.simply(new BlockHardStone(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.URANIUM.getMeta()),BlockTypes_Ore.URANIUM.getMeta(),"immersiveengineering:blocks/ore_uranium"),"ie_hard_uranium_ore");
-	public static final Item ORE_URANIUM = ModItems.makeOre("ie_uranium");
+	public static final Block HARD_URANIUM = ModBlocks.makeHardBlock(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.URANIUM.getMeta()),BlockTypes_Ore.URANIUM.getMeta(),texturePath+"ore_uranium",id,"uranium");
+	public static final Item ORE_URANIUM = ModItems.makeOre(id,"uranium");
 	
+    @Override
+    public void preInit() {
+        MinecraftForge.EVENT_BUS.register(this);
+    }
 	
-	public static void init(){
+	@Override
+	public void init(){
 
 		RockRegistry.addRock(IEContent.blockOre,BlockTypes_Ore.COPPER.getMeta(), ModItems.ROCK_STONE);
 		RockRegistry.addRock(IEContent.blockOre,BlockTypes_Ore.ALUMINUM.getMeta(), ModItems.ROCK_STONE);
@@ -63,8 +78,8 @@ public class ImmersiveEngineeringCompat {
 
 	}
 
-
-	public static void registerBlocks(RegistryEvent.Register<Block> event) {
+	@SubscribeEvent
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 		
 		registry.register(HARD_COPPER);
@@ -75,8 +90,8 @@ public class ImmersiveEngineeringCompat {
 		registry.register(HARD_URANIUM);
 	}
 
-
-	public static void registerItems(RegistryEvent.Register<Item> event) {
+	@SubscribeEvent
+	public void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
 		
 		registry.register(ORE_COPPER);
@@ -92,26 +107,20 @@ public class ImmersiveEngineeringCompat {
 		ModItems.registerItemBlock(registry, HARD_SILVER);
 		ModItems.registerItemBlock(registry, HARD_NICKEL);
 		ModItems.registerItemBlock(registry, HARD_URANIUM);
+		
+		DivergentUnderground.doDicts("Copper",ORE_COPPER,HARD_COPPER);
+		DivergentUnderground.doDicts("Aluminum",ORE_ALUMINUM,HARD_ALUMINUM);
+		DivergentUnderground.doDicts("Lead",ORE_LEAD,HARD_LEAD);
+		DivergentUnderground.doDicts("Silver",ORE_SILVER,HARD_SILVER);
+		DivergentUnderground.doDicts("Nickel",ORE_NICKEL,HARD_NICKEL);
+		DivergentUnderground.doDicts("Uranium",ORE_URANIUM,HARD_URANIUM);
+
 
 	}
 
-	public static void registerOreDicts(){
-		doDicts("Copper",ORE_COPPER,HARD_COPPER);
-		doDicts("Aluminum",ORE_ALUMINUM,HARD_ALUMINUM);
-		doDicts("Lead",ORE_LEAD,HARD_LEAD);
-		doDicts("Silver",ORE_SILVER,HARD_SILVER);
-		doDicts("Nickel",ORE_NICKEL,HARD_NICKEL);
-		doDicts("Uranium",ORE_URANIUM,HARD_URANIUM);
-
-	}
-
-	private static void doDicts(String type,Item ore, Block block){
-		OreDictionary.registerOre("ore"+type, block);
-		OreDictionary.registerOre("ore"+type, ore);
-		OreDictionary.registerOre("rockOre"+type,ore);
-	}
-
-	public static void registerModels(ModelRegistryEvent event) {
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void registerModels(ModelRegistryEvent event) {
 		ClientProxy.registerItemModel(ORE_COPPER);
 		ClientProxy.registerBlockModel(HARD_COPPER);
 		ClientProxy.registerItemModel(ORE_ALUMINUM);

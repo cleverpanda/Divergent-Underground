@@ -1,0 +1,20 @@
+{
+    "conditions": [{
+        "type": "minecraft:item_exists",
+        "item": "divergentunderground:quark_marble_cobblestone"
+    }],
+  "result": {
+    "item": "divergentunderground:quark_marble_cobblestone",
+	"count": 1
+  },
+  "pattern": [
+    "PP",
+    "PP"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "P": {
+      "item": "divergentunderground:rock_quark_marble"
+    }
+  }
+}

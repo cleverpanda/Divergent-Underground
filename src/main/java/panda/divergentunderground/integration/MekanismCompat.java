@@ -4,11 +4,16 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.IForgeRegistry;
-import panda.divergentunderground.common.blocks.BlockHardStone;
+import panda.divergentunderground.DivergentUnderground;
+import panda.divergentunderground.experimental.CompatibilityPlugin;
+import panda.divergentunderground.experimental.ICompatibilityPlugin;
 import panda.divergentunderground.init.ModBlocks;
 import panda.divergentunderground.init.ModItems;
 import panda.divergentunderground.proxy.ClientProxy;
@@ -21,22 +26,30 @@ import mekanism.common.MekanismFluids;
 import mekanism.common.MekanismItems;
 import mekanism.common.Resource;
 import mekanism.common.recipe.RecipeHandler;
-import mekanism.common.util.StackUtils;
 
-public class MekanismCompat {
+@CompatibilityPlugin("mekanism")
+public class MekanismCompat implements ICompatibilityPlugin {
+	
+	private static final String texturePath = "mekanism:blocks/";
+	private static final String modid = "mekanism";
 	
 	public static final Block ORE_BLOCK = MekanismBlocks.OreBlock;
 	
-	public static final Block HARD_OSMIUM = ModBlocks.simply(new BlockHardStone(ORE_BLOCK.getStateFromMeta(0),1,"mekanism:blocks/osmiumore"),"mekanism_hard_osmium_ore");
-	public static final Block HARD_COPPER = ModBlocks.simply(new BlockHardStone(ORE_BLOCK.getStateFromMeta(1),1,"mekanism:blocks/copperore"),"mekanism_hard_copper_ore");
-	public static final Block HARD_TIN = ModBlocks.simply(new BlockHardStone(ORE_BLOCK.getStateFromMeta(2),1,"mekanism:blocks/tinore"),"mekanism_hard_tin_ore");
+	public static final Block HARD_OSMIUM = ModBlocks.makeHardBlock(ORE_BLOCK.getStateFromMeta(0),1,texturePath+"osmiumore",modid,"osmium");
+	public static final Block HARD_COPPER = ModBlocks.makeHardBlock(ORE_BLOCK.getStateFromMeta(1),1,texturePath+"copperore",modid,"copper");
+	public static final Block HARD_TIN = ModBlocks.makeHardBlock(ORE_BLOCK.getStateFromMeta(2),1,texturePath+"tinore",modid,"tin");
 
-	public static final Item ORE_OSMIUM = ModItems.makeOre("mekanism_osmium");
-	public static final Item ORE_COPPER = ModItems.makeOre("mekanism_copper");
-	public static final Item ORE_TIN = ModItems.makeOre("mekanism_tin");
+	public static final Item ORE_OSMIUM = ModItems.makeOre(modid,"osmium");
+	public static final Item ORE_COPPER = ModItems.makeOre(modid,"copper");
+	public static final Item ORE_TIN = ModItems.makeOre(modid,"tin");
 
-
-	public static void init(){
+    @Override
+    public void preInit() {
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+	
+	@Override
+	public void init(){
 		RockRegistry.addRock(ORE_BLOCK,0, ModItems.ROCK_STONE);
 		RockRegistry.addRock(ORE_BLOCK,1, ModItems.ROCK_STONE);
 		RockRegistry.addRock(ORE_BLOCK,2, ModItems.ROCK_STONE);
@@ -67,14 +80,16 @@ public class MekanismCompat {
         RecipeHandler.addChemicalInjectionChamberRecipe(new ItemStack(ORE_TIN), MekanismFluids.HydrogenChloride,new ItemStack(MekanismItems.Shard, 4, Resource.TIN.ordinal()));
 	}
 
-	public static void registerBlocks(RegistryEvent.Register<Block> event) {
+	@SubscribeEvent
+	public void registerBlocks(RegistryEvent.Register<Block> event) {
 		IForgeRegistry<Block> registry = event.getRegistry();
 		registry.register(HARD_OSMIUM);
 		registry.register(HARD_COPPER);
 		registry.register(HARD_TIN);
 	}
-
-	public static void registerItems(RegistryEvent.Register<Item> event) {
+	
+	@SubscribeEvent
+	public void registerItems(RegistryEvent.Register<Item> event) {
 		IForgeRegistry<Item> registry = event.getRegistry();
 		
 		registry.register(ORE_OSMIUM);
@@ -84,21 +99,15 @@ public class MekanismCompat {
 		ModItems.registerItemBlock(registry, HARD_OSMIUM);
 		ModItems.registerItemBlock(registry, HARD_COPPER);
 		ModItems.registerItemBlock(registry, HARD_TIN);
+		
+		DivergentUnderground.doDicts("Copper",ORE_COPPER,HARD_COPPER);
+		DivergentUnderground.doDicts("Tin",ORE_TIN,HARD_TIN);
+		DivergentUnderground.doDicts("Osmium",ORE_OSMIUM,HARD_OSMIUM);
 	}
 
-	public static void registerOreDicts(){
-		doDicts("Copper",ORE_COPPER,HARD_COPPER);
-		doDicts("Tin",ORE_TIN,HARD_TIN);
-		doDicts("Osmium",ORE_OSMIUM,HARD_OSMIUM);
-	}
-
-	private static void doDicts(String type,Item ore, Block block){
-		OreDictionary.registerOre("ore"+type, block);
-		OreDictionary.registerOre("ore"+type, ore);
-		OreDictionary.registerOre("rockOre"+type,ore);
-	}
-
-	public static void registerModels(ModelRegistryEvent event) {
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public void registerModels(ModelRegistryEvent event) {
 		ClientProxy.registerItemModel(ORE_OSMIUM);
 		ClientProxy.registerBlockModel(HARD_OSMIUM);
 		ClientProxy.registerItemModel(ORE_COPPER);
