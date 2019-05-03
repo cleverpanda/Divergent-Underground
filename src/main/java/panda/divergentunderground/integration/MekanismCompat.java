@@ -66,18 +66,30 @@ public class MekanismCompat implements ICompatibilityPlugin {
 		RecipeHandler.addEnrichmentChamberRecipe(new ItemStack(ORE_OSMIUM), new ItemStack(MekanismItems.Dust, 2, Resource.OSMIUM.ordinal()));
 		RecipeHandler.addEnrichmentChamberRecipe(new ItemStack(ORE_COPPER), new ItemStack(MekanismItems.Dust, 2, Resource.COPPER.ordinal()));
 		RecipeHandler.addEnrichmentChamberRecipe(new ItemStack(ORE_TIN), new ItemStack(MekanismItems.Dust, 2, Resource.TIN.ordinal()));
+		
+		RecipeHandler.addEnrichmentChamberRecipe(new ItemStack(ModItems.ORE_IRON), new ItemStack(MekanismItems.Dust, 2, Resource.TIN.ordinal()));
+		RecipeHandler.addEnrichmentChamberRecipe(new ItemStack(ModItems.ORE_GOLD), new ItemStack(MekanismItems.Dust, 2, Resource.TIN.ordinal()));
 	
         RecipeHandler.addChemicalDissolutionChamberRecipe(new ItemStack(ORE_OSMIUM),new GasStack(GasRegistry.getGas("osmium"), 1000));
         RecipeHandler.addChemicalDissolutionChamberRecipe(new ItemStack(ORE_COPPER),new GasStack(GasRegistry.getGas("copper"), 1000));
         RecipeHandler.addChemicalDissolutionChamberRecipe(new ItemStack(ORE_TIN),new GasStack(GasRegistry.getGas("tin"), 1000));
         
+        RecipeHandler.addChemicalDissolutionChamberRecipe(new ItemStack(ModItems.ORE_IRON),new GasStack(GasRegistry.getGas("tin"), 1000));
+        RecipeHandler.addChemicalDissolutionChamberRecipe(new ItemStack(ModItems.ORE_GOLD),new GasStack(GasRegistry.getGas("tin"), 1000));
+        
         RecipeHandler.addPurificationChamberRecipe(new ItemStack(ORE_OSMIUM), new ItemStack(MekanismItems.Clump, 3, Resource.OSMIUM.ordinal()));
         RecipeHandler.addPurificationChamberRecipe(new ItemStack(ORE_COPPER), new ItemStack(MekanismItems.Clump, 3, Resource.COPPER.ordinal()));
         RecipeHandler.addPurificationChamberRecipe(new ItemStack(ORE_TIN), new ItemStack(MekanismItems.Clump, 3, Resource.TIN.ordinal()));
 	
+        RecipeHandler.addPurificationChamberRecipe(new ItemStack(ModItems.ORE_IRON), new ItemStack(MekanismItems.Clump, 3, Resource.TIN.ordinal()));
+        RecipeHandler.addPurificationChamberRecipe(new ItemStack(ModItems.ORE_GOLD), new ItemStack(MekanismItems.Clump, 3, Resource.TIN.ordinal()));
+        
         RecipeHandler.addChemicalInjectionChamberRecipe(new ItemStack(ORE_OSMIUM), MekanismFluids.HydrogenChloride,new ItemStack(MekanismItems.Shard, 4, Resource.OSMIUM.ordinal()));
         RecipeHandler.addChemicalInjectionChamberRecipe(new ItemStack(ORE_COPPER), MekanismFluids.HydrogenChloride,new ItemStack(MekanismItems.Shard, 4, Resource.COPPER.ordinal()));
         RecipeHandler.addChemicalInjectionChamberRecipe(new ItemStack(ORE_TIN), MekanismFluids.HydrogenChloride,new ItemStack(MekanismItems.Shard, 4, Resource.TIN.ordinal()));
+        
+        RecipeHandler.addChemicalInjectionChamberRecipe(new ItemStack(ModItems.ORE_IRON), MekanismFluids.HydrogenChloride,new ItemStack(MekanismItems.Shard, 4, Resource.TIN.ordinal()));
+        RecipeHandler.addChemicalInjectionChamberRecipe(new ItemStack(ModItems.ORE_GOLD), MekanismFluids.HydrogenChloride,new ItemStack(MekanismItems.Shard, 4, Resource.TIN.ordinal()));
 	}
 
 	@SubscribeEvent

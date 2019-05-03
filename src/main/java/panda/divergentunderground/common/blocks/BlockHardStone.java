@@ -5,6 +5,7 @@ import java.util.Random;
 import akka.japi.Pair;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
+import net.minecraft.block.BlockRedstoneOre;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -19,6 +20,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
@@ -40,7 +42,7 @@ public class BlockHardStone extends BlockOre {
 			worldIn.setBlockState(pos, state.cycleProperty(DEPTH));
 		}
 		
-		return alias.getBlock().onBlockActivated(worldIn, pos, state, playerIn, hand, facing, hitX, hitY, hitZ);
+		return alias.getBlock().onBlockActivated(worldIn, pos, alias, playerIn, hand, facing, hitX, hitY, hitZ);
 	}
 
 	public static final PropertyInteger DEPTH = PropertyInteger.create("hardness", 0,3);
@@ -126,7 +128,7 @@ public class BlockHardStone extends BlockOre {
 	@Override
     public int getExpDrop(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune)
     {if(this.type > 0){return 0;}
-		return alias.getBlock().getExpDrop(state, world, pos, fortune);
+		return alias.getBlock().getExpDrop(alias, world, pos, fortune);
     }
 	
 	
@@ -134,18 +136,79 @@ public class BlockHardStone extends BlockOre {
     @Override
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
     {
-    	alias.getBlock().randomDisplayTick(stateIn, worldIn, pos, rand);
+    	
+    	if(alias.getBlock() == Blocks.REDSTONE_ORE){
+    		this.spawnParticles(worldIn, pos);
+            return;
+    	}
+    	alias.getBlock().randomDisplayTick(alias, worldIn, pos, rand);
     }
     
     @Override
     public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn)
     {
+    	if(alias.getBlock() == Blocks.REDSTONE_ORE){
+    		this.spawnParticles(worldIn, pos);
+            return;
+    	}
         alias.getBlock().onBlockClicked(worldIn, pos, playerIn);
+    }
+    
+    private void spawnParticles(World worldIn, BlockPos pos)
+    {
+        Random random = worldIn.rand;
+        double d0 = 0.0625D;
+
+        for (int i = 0; i < 6; ++i)
+        {
+            double d1 = (double)((float)pos.getX() + random.nextFloat());
+            double d2 = (double)((float)pos.getY() + random.nextFloat());
+            double d3 = (double)((float)pos.getZ() + random.nextFloat());
+
+            if (i == 0 && !worldIn.getBlockState(pos.up()).isOpaqueCube())
+            {
+                d2 = (double)pos.getY() + 0.0625D + 1.0D;
+            }
+
+            if (i == 1 && !worldIn.getBlockState(pos.down()).isOpaqueCube())
+            {
+                d2 = (double)pos.getY() - 0.0625D;
+            }
+
+            if (i == 2 && !worldIn.getBlockState(pos.south()).isOpaqueCube())
+            {
+                d3 = (double)pos.getZ() + 0.0625D + 1.0D;
+            }
+
+            if (i == 3 && !worldIn.getBlockState(pos.north()).isOpaqueCube())
+            {
+                d3 = (double)pos.getZ() - 0.0625D;
+            }
+
+            if (i == 4 && !worldIn.getBlockState(pos.east()).isOpaqueCube())
+            {
+                d1 = (double)pos.getX() + 0.0625D + 1.0D;
+            }
+
+            if (i == 5 && !worldIn.getBlockState(pos.west()).isOpaqueCube())
+            {
+                d1 = (double)pos.getX() - 0.0625D;
+            }
+
+            if (d1 < (double)pos.getX() || d1 > (double)(pos.getX() + 1) || d2 < 0.0D || d2 > (double)(pos.getY() + 1) || d3 < (double)pos.getZ() || d3 > (double)(pos.getZ() + 1))
+            {
+                worldIn.spawnParticle(EnumParticleTypes.REDSTONE, d1, d2, d3, 0.0D, 0.0D, 0.0D);
+            }
+        }
     }
 
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
+    	if(alias.getBlock() == Blocks.REDSTONE_ORE){
+    		this.spawnParticles(worldIn, pos);
+            return;
+    	}
         alias.getBlock().onEntityWalk(worldIn, pos, entityIn);
     }
 
@@ -157,7 +220,7 @@ public class BlockHardStone extends BlockOre {
 			
 			for(int i = 0; i < drops.size(); i++){
 				ItemStack stack = drops.get(i);
-				if (stack.getItem() == alias.getBlock().getItemDropped(state, rand, fortune) &&
+				if (stack.getItem() == alias.getBlock().getItemDropped(alias, rand, fortune) &&
 						Block.getBlockFromItem(alias.getBlock().getItemDropped(alias,rand,fortune)) != Blocks.AIR){
 					drops.remove(stack);
 				}
@@ -218,7 +281,10 @@ public class BlockHardStone extends BlockOre {
 	@Override
     public int getMetaFromState(IBlockState state)
     {
-        return state.getValue(DEPTH);
+		if(state.getBlock() instanceof BlockHardStone){
+			return state.getValue(DEPTH);
+		}
+        return 0;
     }
 
     @Override
@@ -242,7 +308,7 @@ public class BlockHardStone extends BlockOre {
     @Override
     public MapColor getMapColor(IBlockState state, IBlockAccess worldIn, BlockPos pos)
     {
-        return alias.getBlock().getMapColor(state, worldIn, pos);
+        return alias.getBlock().getMapColor(alias, worldIn, pos);
     }
     
 	@Override

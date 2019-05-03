@@ -35,7 +35,7 @@ public final class ModBlocks {
 	public static final Block HARD_EMERALD = simply(new BlockHardStone(Blocks.EMERALD_ORE.getDefaultState(),2,"blocks/emerald_ore"),"hard_emerald_ore");
 	public static final Block HARD_LAPIS = simply(new BlockHardStone(Blocks.LAPIS_ORE.getDefaultState(),1,"blocks/lapis_ore"),"hard_lapis_ore");
 	public static final Block HARD_REDSTONE = simply(new BlockHardStone(Blocks.REDSTONE_ORE.getDefaultState(),1,"blocks/redstone_ore"),"hard_redstone_ore");
-	
+
 	
 	public static final Block GRANITE_COBBLE = simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),"granite_cobblestone");
 	public static final Block ANDESITE_COBBLE = simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),"andesite_cobblestone");
