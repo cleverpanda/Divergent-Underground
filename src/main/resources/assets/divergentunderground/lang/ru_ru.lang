@@ -1,0 +1,104 @@
+itemGroup.divergentunderground=Divergent Underground
+item.divergentunderground.rock_stone.name=Кусок камня
+item.divergentunderground.rock_andesite.name=Кусок андезита
+item.divergentunderground.rock_diorite.name=Кусок диорита
+item.divergentunderground.rock_granite.name=Кусок гранита
+item.divergentunderground.rock_sandstone.name=Кусок песчаника
+item.divergentunderground.rock_red_sandstone.name=Кусок красного песчаника
+item.divergentunderground.rock_netherrack.name=Кусок незерита
+item.divergentunderground.rock_endstone.name=Кусок камня края
+item.divergentunderground.ore_gold.name=Золотая руда
+item.divergentunderground.ore_iron.name=Железная руда
+item.divergentunderground.ore_copper.name=Медная руда
+item.divergentunderground.gem_raw_emerald.name=Неразрезанный изумруд
+item.divergentunderground.gem_raw_diamond.name=Неразрезанный алмаз
+item.divergentunderground.chisel.name=Стамеска
+tile.divergentunderground.hard_stone.name=Камень
+tile.divergentunderground.hard_granite.name=Гранит
+tile.divergentunderground.hard_andesite.name=Андезит
+tile.divergentunderground.hard_diorite.name=Диорит
+tile.divergentunderground.hard_iron_ore.name=Железная руда
+tile.divergentunderground.hard_gold_ore.name=Золотая руда
+tile.divergentunderground.hard_coal_ore.name=Угольная руда
+tile.divergentunderground.hard_diamond_ore.name=Алмазная руда
+tile.divergentunderground.hard_emerald_ore.name=Изумрудная руда
+tile.divergentunderground.hard_lapis_ore.name=Лазуритовая руда
+tile.divergentunderground.hard_redstone_ore.name=Редстоуновая руда
+tile.divergentunderground.andesite_cobblestone.name=Андезитовый булыжник
+tile.divergentunderground.diorite_cobblestone.name=Диоритовый булыжник
+tile.divergentunderground.granite_cobblestone.name=Гранитный булыжник
+
+item.divergentunderground.ore_thermal_copper.name=Медная руда
+tile.divergentunderground.thermal_hard_copper_ore.name=Медная руда
+item.divergentunderground.ore_thermal_tin.name=Оловянная руда
+tile.divergentunderground.thermal_hard_tin_ore.name=Оловянная руда
+item.divergentunderground.ore_thermal_silver.name=Серебрянная руда
+tile.divergentunderground.thermal_hard_silver_ore.name=Серебрянная руда
+item.divergentunderground.ore_thermal_lead.name=Свинцовая руда
+tile.divergentunderground.thermal_hard_lead_ore.name=Свинцовая руда
+item.divergentunderground.ore_thermal_aluminum.name=Алюминиевая руда
+tile.divergentunderground.thermal_hard_aluminum_ore.name=Алюминиевая руда
+item.divergentunderground.ore_thermal_nickel.name=Никлевая руда
+tile.divergentunderground.thermal_hard_nickel_ore.name=Никлевая руда
+item.divergentunderground.ore_thermal_platinum.name=Платиновая руда
+tile.divergentunderground.thermal_hard_platinum_ore.name=Платиновая руда
+item.divergentunderground.ore_thermal_iridium.name=Иридиевая руда
+tile.divergentunderground.thermal_hard_iridium_ore.name=Иридиевая руда
+item.divergentunderground.ore_thermal_mithril.name=Мифриловая руда
+tile.divergentunderground.thermal_hard_mithril_ore.name=Мифриловая руда
+
+item.divergentunderground.gem_raw_bop_amethyst.name=Необрезанный аметист
+item.divergentunderground.gem_raw_bop_ruby.name=Необрезанный рубин
+item.divergentunderground.gem_raw_bop_peridot.name=Необрезанный хризолит
+item.divergentunderground.gem_raw_bop_topaz.name=Необрезанный топаз
+item.divergentunderground.gem_raw_bop_tanzanite.name=Необрезанный танзанит
+item.divergentunderground.gem_raw_bop_malachite.name=Необрезанный малахит
+item.divergentunderground.gem_raw_bop_sapphire.name=Необрезанный сапфир
+item.divergentunderground.gem_raw_bop_amber.name=Необрезанный янтарь
+
+tile.divergentunderground.bop_hard_amethyst_ore.name=Аметистовая руда
+tile.divergentunderground.bop_hard_ruby_ore.name=Рубиновая руда
+tile.divergentunderground.bop_hard_peridot_ore.name=Хризолитовая руда
+tile.divergentunderground.bop_hard_topaz_ore.name=Топазовая руда
+tile.divergentunderground.bop_hard_tanzanite_ore.name=Танзанитовая руда
+tile.divergentunderground.bop_hard_malachite_ore.name=Малахитовая руда
+tile.divergentunderground.bop_hard_sapphire_ore.name=Сапфировая руда
+tile.divergentunderground.bop_hard_amber_ore.name=Янтарная руда
+
+item.divergentunderground.ore_ie_copper.name=Медная руда
+item.divergentunderground.ore_ie_aluminum.name=Алюминиевая руда
+item.divergentunderground.ore_ie_lead.name=Свинцовая руда
+item.divergentunderground.ore_ie_silver.name=Серебрянная руда
+item.divergentunderground.ore_ie_nickel.name=Никлевая руда
+item.divergentunderground.ore_ie_uranium.name=Урановая руда
+tile.divergentunderground.ie_hard_copper_ore.name=Медная руда
+tile.divergentunderground.ie_hard_aluminum_ore.name=Алюминиевая руда
+tile.divergentunderground.ie_hard_lead_ore.name=Свинцовая руда
+tile.divergentunderground.ie_hard_silver_ore.name=Серебрянная руда
+tile.divergentunderground.ie_hard_nickel_ore.name=Никлевая руда
+tile.divergentunderground.ie_hard_uranium_ore.name=Урановая руда
+
+item.divergentunderground.ore_forestry_copper.name=Медная руда
+item.divergentunderground.ore_forestry_tin.name=Оловянная руда
+tile.divergentunderground.forestry_hard_copper_ore.name=Медная руда
+tile.divergentunderground.forestry_hard_tin_ore.name=Оловянная руда
+tile.divergentunderground.forestry_hard_apatite_ore.name=Апатитовая руда
+
+tile.divergentunderground.ic2_hard_tin_ore.name=Оловянная руда
+tile.divergentunderground.ic2_hard_copper_ore.name=Медная руда
+tile.divergentunderground.ic2_hard_lead_ore.name=Свинцовая руда
+tile.divergentunderground.ic2_hard_uranium_ore.name=Урановая руда
+
+item.divergentunderground.ore_ic2_copper.name=Медная руда
+item.divergentunderground.ore_ic2_tin.name=Оловянная руда
+item.divergentunderground.ore_ic2_lead.name=Свинцовая руда
+item.divergentunderground.ore_ic2_uranium.name=Урановая руда
+
+tile.divergentunderground.mekanism_hard_copper_ore.name=Медная руда
+tile.divergentunderground.mekanism_hard_tin_ore.name=Оловянная руда
+tile.divergentunderground.mekanism_hard_osmium_ore.name=Осмиевая руда
+
+item.divergentunderground.ore_mekanism_copper.name=Медная руда
+item.divergentunderground.ore_mekanism_tin.name=Оловянная руда
+item.divergentunderground.ore_mekanism_osmium.name=Осмиевая руда
+
