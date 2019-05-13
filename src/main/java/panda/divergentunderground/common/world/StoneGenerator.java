@@ -31,9 +31,6 @@ public class StoneGenerator implements IWorldGenerator {
 	
 					for(BlockHardStone hardstone : ModBlocks.hardStones){
 						if(hardstone.doStoneReplace(state, world, pos, y, y1)){
-							if(state.getBlock().getRegistryName().getNamespace().equals("quark")){
-								DivergentUnderground.logger.info(state);
-							}
 							break;
 						}
 					}                	

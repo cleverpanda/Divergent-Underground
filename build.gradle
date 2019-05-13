@@ -48,16 +48,29 @@ repositories {
     name = "ic2, forestry"
     url = "http://maven.ic2.player.to/"
   }
+    maven { // ModMaven, there is a bunch of stuff on there
+        name 'ModMaven'
+        url 'http://modmaven.k-4u.nl/'
+    }
+  maven {
+    name 'MMD'
+    url 'https://maven.mcmoddev.com/'
+  }
 
   maven {
     url = 'https://mod-buildcraft.com/maven'
+  }
+
+  maven { // Mantle, TCon, JEI
+    name 'DVS1 Maven FS'
+    url 'https://dvs1.progwml6.com/files/maven'
   }
   
 }
 
 dependencies {
 deobfCompile "mcp.mobius.waila:Hwyla:1.8.26-B41_1.12.2"
-deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.2.+:universal"
+deobfCompile "codechicken:CodeChickenLib:1.12.2-3.2.2.355:universal"
 
 deobfCompile ("cofh:CoFHCore:1.12.2-4.6.2.+:universal") {
     exclude group: 'mezz.jei'
@@ -88,6 +101,21 @@ deobfCompile ("cofh:CoFHCore:1.12.2-4.6.2.+:universal") {
   deobfCompile("appeng:appliedenergistics2:rv6-stable-6")
   deobfCompile("vazkii.autoreglib:AutoRegLib:1.3-28.19")
   deobfCompile("vazkii.quark:Quark:r1.5-146.9")
+  deobfCompile("thaumcraft:Thaumcraft:1.12.2:6.1.BETA26")
+  deobfCompile("baubles:Baubles:1.12:1.5.2")
+
+  deobfCompile("com.mcmoddev:AdditionalLootTables:1.12-2.0.3.39")
+  deobfCompile("com.mcmoddev:OreSpawn:1.12-3.2.+")
+  deobfCompile("com.mcmoddev:MMDLib:1.12-1.0.0-rc+")
+  deobfCompile("com.mcmoddev:BaseMetals:1.12-2.5.0-rc+")
+
+  //deobfProvided("slimeknights.mantle:Mantle:1.12-1.3.3.49") {
+  //  exclude group: 'mezz.jei'
+  //}
+
+  //deobfCompile("slimeknights:TConstruct:1.12.2-2.12.0.137") {
+  //  exclude group: 'mezz.jei'
+  //}
 }
 
 minecraft {

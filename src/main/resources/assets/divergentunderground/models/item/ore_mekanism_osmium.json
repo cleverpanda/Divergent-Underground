@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divergentunderground:items/integration/mekanism_ore_osmium"
+        "layer0": "divergentunderground:items/integration/mekanism/mekanism_ore_osmium"
     }
 }

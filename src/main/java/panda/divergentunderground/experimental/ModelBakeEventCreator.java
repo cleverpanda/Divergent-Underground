@@ -29,13 +29,16 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * @author Cadiboo
+ * Code altered from Cadiboo
  */
 //GNU Lesser General Public License v3.0
 //
 
 @EventBusSubscriber(modid = DivergentUnderground.MODID)
 public final class ModelBakeEventCreator {
+//	change to your mod folder if you're using this in a separate mod
+	//Change nothing else
+	private static final String MODID = "divergentunderground";
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public static void writeAssets(final ModelBakeEvent ignored) {
@@ -46,8 +49,9 @@ public final class ModelBakeEventCreator {
 		DivergentUnderground.logger.info("In dev environment, will make missing jsons");
 
 		String runDir = System.getProperty("user.dir");
-
-		String dir = runDir.substring(0, runDir.length() - 3).replace("\\", "/") + "src/main/resources/assets/divergentunderground";
+		
+						
+		String dir = runDir.substring(0, runDir.length() - 3).replace("\\", "/") + "src/main/resources/assets/"+MODID;
 
 		String blockstatesDir = dir +"/blockstates/";
 		String modelsDir = dir +"/models/item/";

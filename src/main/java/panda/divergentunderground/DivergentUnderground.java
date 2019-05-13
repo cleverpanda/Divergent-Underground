@@ -34,10 +34,10 @@ import net.minecraftforge.common.config.Configuration;
 
 
 @Mod(modid = DivergentUnderground.MODID, name = DivergentUnderground.NAME, version = DivergentUnderground.VERSION,
-dependencies = "after:biomesoplenty;after:thermalfoundation;after:cofhworld;after:thermalexpansion;after:ic2;after:mekanism;after:forestry;after:immersiveengineering;after:quark;")
+dependencies = "after:biomesoplenty;after:thermalfoundation;after:cofhworld;after:thermalexpansion;after:ic2;after:mekanism;after:forestry;after:immersiveengineering;after:quark;after:basemetals;after:thaumcraft;after:basemetals;")
 public class DivergentUnderground {
 	public static final String MODID = "divergentunderground";
-	public static final String VERSION = "0.57.0";
+	public static final String VERSION = "0.59.0";
 	public static final String NAME = "Divergent Underground";
 	public static SimpleNetworkWrapper wrapper;
 	

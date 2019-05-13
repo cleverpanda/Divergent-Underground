@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divergentunderground:items/integration/quark_rock_icystone"
+        "layer0": "divergentunderground:items/integration/quark/quark_rock_icystone"
     }
 }

@@ -34,26 +34,39 @@ public final class ModItems {
 	public static final Item CHISEL = simply(new ItemChisel(),"chisel");
 
 	
+	//Use this if mod support is contained within that mod
+	public static Item makeExternalRock(String modid,String key){
+		return externalSimply(new ItemDU(itemsDir+"rock_"+modid+"_"+key), "rock_"+modid+"_"+key,modid);
+	}
 	
 	public static Item makeRock(String modid,String key){
-		return simply(new ItemDU(itemsDir+"integration/rock_"+modid+"_"+key), "rock_"+modid+"_"+key);
+		return simply(new ItemDU(itemsDir+"integration/"+modid+"/rock_"+modid+"_"+key), "rock_"+modid+"_"+key);
 	}
 	
 	private static Item makeRock(String key){
 		return simply(new ItemDU(itemsDir+"rock_"+key), "rock_"+key);
 	}
 	
-
+	//Use this if mod support is contained within that mod
+	public static Item makeExternalOre(String modid,String key){
+		return externalSimply(new ItemDU(itemsDir+"ore_"+modid+"_"+key), "ore_"+modid+"_"+key,modid);
+	}
+	
 	public static Item makeOre(String modid,String key){
-		return simply(new ItemDU(itemsDir+"integration/ore_"+modid+"_"+key), "ore_"+modid+"_"+key);
+		return simply(new ItemDU(itemsDir+"integration/"+modid+"/ore_"+modid+"_"+key), "ore_"+modid+"_"+key);
 	}	
 	
 	private static Item makeOre(String key){
 		return simply(new ItemDU(itemsDir+"ore_"+key), "ore_"+key);
 	}
 	
+	//Use this if mod support is contained within that mod
+	public static Item makeExternalGem(String itemsDir,String modid,String key){
+		return externalSimply(new ItemDU(itemsDir+"gem_raw_"+modid+"_"+key), "gem_raw_"+modid+"_"+key,modid);
+	}
+	
 	public static Item makeGem(String modid,String key){
-		return simply(new ItemDU(itemsDir+"integration/gem_raw_"+modid+"_"+key), "gem_raw_"+modid+"_"+key);
+		return simply(new ItemDU(itemsDir+"integration/"+modid+"/gem_raw_"+modid+"_"+key), "gem_raw_"+modid+"_"+key);
 	}	
 
 	private static Item makeGem(String key){
@@ -62,6 +75,9 @@ public final class ModItems {
 	
 	private static Item simply(Item item, String name) { 
 		return item.setRegistryName(DivergentUnderground.MODID, name).setTranslationKey(DivergentUnderground.MODID + "." + name).setCreativeTab(DivergentUnderground.Tab);
+	}
+	private static Item externalSimply(Item item, String name,String modid) { 
+		return item.setRegistryName(modid, name).setTranslationKey(modid + "." + name).setCreativeTab(DivergentUnderground.Tab);
 	}
 
 	@SubscribeEvent

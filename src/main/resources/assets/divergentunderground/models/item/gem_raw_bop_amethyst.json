@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divergentunderground:items/integration/bop_gem_amethyst"
+        "layer0": "divergentunderground:items/integration/bop/bop_gem_amethyst"
     }
 }

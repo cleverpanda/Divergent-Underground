@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "divergentunderground:items/integration/ic2_ore_copper"
+        "layer0": "divergentunderground:items/integration/ic2/ic2_ore_copper"
     }
 }
