@@ -252,7 +252,7 @@ public class BlockHardStone extends BlockOre {
 				int count = rand.nextInt(fortune + 2) - 1;
 				if(GemRegistry.hasGems(new Pair(alias.getBlock(),alias.getBlock().getMetaFromState(alias)))){
 				ItemStack gem = GemRegistry.getGems(new Pair(alias.getBlock(),alias.getBlock().getMetaFromState(alias)));
-				DivergentUnderground.logger.info(gem);
+				//DivergentUnderground.logger.info(gem);
 				if (count < 0)
 				{
 					count = 0;
