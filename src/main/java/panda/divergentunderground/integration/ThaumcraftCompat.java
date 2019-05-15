@@ -1,7 +1,6 @@
 package panda.divergentunderground.integration;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,7 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import panda.divergentunderground.ConfigDivergentUnderground;
-import panda.divergentunderground.experimental.CompatibilityPlugin;
 import panda.divergentunderground.experimental.ICompatibilityPlugin;
 import panda.divergentunderground.init.ModBlocks;
 import panda.divergentunderground.init.ModItems;

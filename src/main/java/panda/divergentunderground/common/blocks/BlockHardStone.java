@@ -2,10 +2,11 @@ package panda.divergentunderground.common.blocks;
 
 import java.util.Random;
 
+import javax.annotation.Nonnull;
+
 import akka.japi.Pair;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
-import net.minecraft.block.BlockRedstoneOre;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.MapColor;
@@ -18,6 +19,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
@@ -29,7 +31,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import panda.divergentunderground.ConfigDivergentUnderground;
-import panda.divergentunderground.DivergentUnderground;
 import panda.divergentunderground.registries.GemRegistry;
 import panda.divergentunderground.registries.OreRegistry;
 import panda.divergentunderground.registries.RockRegistry;
@@ -55,10 +56,10 @@ public class BlockHardStone extends BlockOre {
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DEPTH, 0));
 		alias = replacement;
 		this.type = type;
-        setHardness(1.5F);
+        setHardness(alias.getBlock().getBlockHardness(alias, null, null));
         setResistance(10.0F);
         setSoundType(SoundType.STONE);
-        this.setHarvestLevel("pickaxe", 0);
+        this.setHarvestLevel("pickaxe", alias.getBlock().getHarvestLevel(alias));
         this.textureLocation = texture;
 	}
 	
@@ -67,6 +68,7 @@ public class BlockHardStone extends BlockOre {
 
 		return new ItemStack(this);
 	}
+	
 	
 	public boolean doStoneReplace(IBlockState oldstate,World world,BlockPos pos, int y, int y1){
 		if(oldstate != alias){
@@ -334,6 +336,13 @@ public class BlockHardStone extends BlockOre {
         }
     }
 	
+	  @Nonnull
+	  @Override
+	  @SideOnly(Side.CLIENT)
+	  public BlockRenderLayer getRenderLayer(){
+	    return BlockRenderLayer.CUTOUT_MIPPED;
+	  }
+	  
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
 

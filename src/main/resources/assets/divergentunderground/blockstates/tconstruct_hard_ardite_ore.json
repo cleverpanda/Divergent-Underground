@@ -1,0 +1,14 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {
+      "all": "minecraft:blocks/netherrack",      "overlay": "tconstruct:blocks/ore_ardite"
+    }
+  },
+    "variants": {
+      "hardness=0":{ "model": "divergentunderground:cube_all_overlay" },              
+      "hardness=1":{ "model": "divergentunderground:cube_all_overlay" },              
+      "hardness=2":{ "model": "divergentunderground:cube_all_overlay" },
+      "hardness=3":{ "model": "divergentunderground:cube_all_overlay" }
+    }
+}

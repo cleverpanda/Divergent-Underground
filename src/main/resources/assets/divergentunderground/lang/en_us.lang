@@ -115,3 +115,9 @@ tile.divergentunderground.quark_basalt_cobblestone.name=Basalt Cobblestone
 tile.divergentunderground.quark_limestone_cobblestone.name=Limestone Cobblestone
 tile.divergentunderground.quark_marble_cobblestone.name=Marble Cobblestone
 
+tile.divergentunderground.tconstruct_hard_cobalt_ore.name=Cobalt Ore
+tile.divergentunderground.tconstruct_hard_ardite_ore.name=Ardite Ore
+item.divergentunderground.ore_tconstruct_cobalt.name=Cobalt Ore
+item.divergentunderground.ore_tconstruct_ardite.name=Ardite Ore
+
+

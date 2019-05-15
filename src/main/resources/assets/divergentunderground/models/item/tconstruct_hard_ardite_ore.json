@@ -1,0 +1,6 @@
+{
+    "parent": "divergentunderground:block/cube_all_overlay",
+    "textures": {	"all":"minecraft:blocks/netherrack",
+        "overlay": "tconstruct:blocks/ore_ardite"
+    }
+}

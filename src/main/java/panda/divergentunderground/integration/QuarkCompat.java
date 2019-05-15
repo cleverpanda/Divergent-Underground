@@ -14,6 +14,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
+import panda.divergentunderground.common.blocks.BlockHardStone;
 import panda.divergentunderground.experimental.CompatibilityPlugin;
 import panda.divergentunderground.experimental.ICompatibilityPlugin;
 import panda.divergentunderground.init.ModBlocks;
@@ -32,7 +33,7 @@ public class QuarkCompat implements ICompatibilityPlugin {
 	private static final String texturePath = "quark:blocks/";
 	
 	public static final Block qmarble = RevampStoneGen.marble;
-	public static final Block qlimestone =RevampStoneGen.limestone;
+	public static final Block qlimestone = RevampStoneGen.limestone;
 	
 	//public static final Block HARD_BASALT = ModBlocks.makeHardBlock(Basalt.basalt.getDefaultState(),0,texturePath+"stone_basalt",modid,"basalt");
 	public static final Block HARD_MARBLE = ModBlocks.makeHardBlock(qmarble != null? qmarble.getDefaultState():Blocks.AIR.getDefaultState(),0,texturePath+"stone_marble",modid,"marble");
@@ -45,9 +46,9 @@ public class QuarkCompat implements ICompatibilityPlugin {
 	public static final Item ROCK_FIRESTONE = ModItems.makeRock(modid,"firestone");
 	public static final Item ROCK_ICYSTONE = ModItems.makeRock(modid,"icystone");
 	
-	public static final Block BASALT_COBBLE = ModBlocks.simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_basalt_cobblestone");
-	public static final Block MARBLE_COBBLE = ModBlocks.simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_limestone_cobblestone");
-	public static final Block LIMESTONE_COBBLE = ModBlocks.simply(new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_marble_cobblestone");
+	public static final Block BASALT_COBBLE = ModBlocks.simply((BlockHardStone) new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_basalt_cobblestone");
+	public static final Block MARBLE_COBBLE = ModBlocks.simply((BlockHardStone) new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_limestone_cobblestone");
+	public static final Block LIMESTONE_COBBLE = ModBlocks.simply((BlockHardStone) new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_marble_cobblestone");
 
     @Override
     public void preInit() {
