@@ -114,8 +114,8 @@ deobfCompile ("cofh:CoFHCore:1.12.2-4.6.2.+:universal") {
 
   deobfCompile("com.mcmoddev:AdditionalLootTables:1.12-2.0.3.39")
   deobfCompile("com.mcmoddev:OreSpawn:1.12-3.2.+")
-  //deobfCompile("com.mcmoddev:MMDLib:1.12-1.0.0-rc+")
-  //deobfCompile("com.mcmoddev:BaseMetals:1.12-2.5.0-rc+")
+  deobfCompile("com.mcmoddev:MMDLib:1.12-1.0.0-rc+")
+  deobfCompile("com.mcmoddev:BaseMetals:1.12-2.5.0-rc+")
   deobfCompile "team.chisel:Chisel:MC1.12.2-0.2.1.34"
   deobfCompile "team.chisel.ctm:CTM:MC1.12.2-0.3.3.22"
 

@@ -36,8 +36,7 @@ import java.util.stream.Collectors;
 
 @EventBusSubscriber(modid = DivergentUnderground.MODID)
 public final class ModelBakeEventCreator {
-//	change to your mod folder if you're using this in a separate mod
-	//Change nothing else
+
 	private static final String MODID = "divergentunderground";
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent

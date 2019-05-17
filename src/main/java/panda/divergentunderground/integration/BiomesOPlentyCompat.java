@@ -26,7 +26,7 @@ public class BiomesOPlentyCompat implements ICompatibilityPlugin {
 	private static final String texturePath = "biomesoplenty:blocks/";
 	private static final String modid = "bop"; //Not true, but naming as shorthand
 	
-	public static final Block HARD_AMETHYST = ModBlocks.makeHardBlock(BOPBlocks.gem_ore.getStateFromMeta(0),2,texturePath+"peridot_ore",modid,"amethyst");
+	public static final Block HARD_AMETHYST = ModBlocks.makeHardBlock(BOPBlocks.gem_ore.getStateFromMeta(0),2,texturePath+"amethyst_ore",modid,"amethyst");
 	public static final Item GEM_AMETHYST = ModItems.makeGem(modid,"amethyst");
 	
 	public static final Block HARD_RUBY = ModBlocks.makeHardBlock(BOPBlocks.gem_ore.getStateFromMeta(1),2,texturePath+"ruby_ore",modid,"ruby");

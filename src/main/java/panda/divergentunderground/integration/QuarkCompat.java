@@ -46,9 +46,9 @@ public class QuarkCompat implements ICompatibilityPlugin {
 	public static final Item ROCK_FIRESTONE = ModItems.makeRock(modid,"firestone");
 	public static final Item ROCK_ICYSTONE = ModItems.makeRock(modid,"icystone");
 	
-	public static final Block BASALT_COBBLE = ModBlocks.simply((BlockHardStone) new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_basalt_cobblestone");
-	public static final Block MARBLE_COBBLE = ModBlocks.simply((BlockHardStone) new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_limestone_cobblestone");
-	public static final Block LIMESTONE_COBBLE = ModBlocks.simply((BlockHardStone) new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_marble_cobblestone");
+	public static final Block BASALT_COBBLE = ModBlocks.simplynormal( new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_basalt_cobblestone");
+	public static final Block MARBLE_COBBLE = ModBlocks.simplynormal( new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_limestone_cobblestone");
+	public static final Block LIMESTONE_COBBLE = ModBlocks.simplynormal( new Block(Material.ROCK).setResistance(10f).setHardness(1.5f),modid+"_marble_cobblestone");
 
     @Override
     public void preInit() {
