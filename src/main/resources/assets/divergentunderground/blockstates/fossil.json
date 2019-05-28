@@ -1,0 +1,24 @@
+{
+    "variants": {
+		"hardness=0":[
+			{ "model": "divergentunderground:fossil_a"},
+			{ "model": "divergentunderground:fossil_b"},
+			{ "model": "divergentunderground:fossil_c"}
+		],              
+		"hardness=1":[
+			{ "model": "divergentunderground:fossil_a"},
+			{ "model": "divergentunderground:fossil_b"},
+			{ "model": "divergentunderground:fossil_c"}
+		],
+		"hardness=2":[
+			{ "model": "divergentunderground:fossil_a"},
+			{ "model": "divergentunderground:fossil_b"},
+			{ "model": "divergentunderground:fossil_c"}
+		],
+		"hardness=3":[
+			{ "model": "divergentunderground:fossil_a"},
+			{ "model": "divergentunderground:fossil_b"},
+			{ "model": "divergentunderground:fossil_c"}
+		]
+    }
+}

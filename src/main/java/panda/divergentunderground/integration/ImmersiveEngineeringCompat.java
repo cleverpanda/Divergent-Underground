@@ -44,7 +44,7 @@ public class ImmersiveEngineeringCompat implements ICompatibilityPlugin {
 	public static final Block HARD_NICKEL = ModBlocks.makeHardBlock(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.NICKEL.getMeta()),1,texturePath+"ore_nickel",id,"nickel");
 	public static final Item ORE_NICKEL = ModItems.makeOre(id,"nickel");
 	
-	public static final Block HARD_URANIUM = ModBlocks.makeHardBlock(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.URANIUM.getMeta()),BlockTypes_Ore.URANIUM.getMeta(),texturePath+"ore_uranium",id,"uranium");
+	public static final Block HARD_URANIUM = ModBlocks.makeHardBlock(IEContent.blockOre.getStateFromMeta(BlockTypes_Ore.URANIUM.getMeta()),1,texturePath+"ore_uranium",id,"uranium");
 	public static final Item ORE_URANIUM = ModItems.makeOre(id,"uranium");
 	
     @Override

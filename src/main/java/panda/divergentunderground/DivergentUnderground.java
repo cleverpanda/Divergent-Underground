@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import panda.divergentunderground.common.eventhandler.EventsHandler;
+import panda.divergentunderground.common.world.FeatureGenerator;
 import panda.divergentunderground.common.world.StoneGenerator;
 import panda.divergentunderground.experimental.CompatibilityPlugin;
 import panda.divergentunderground.experimental.ICompatibilityPlugin;
@@ -37,7 +38,7 @@ import net.minecraftforge.common.config.Configuration;
 dependencies = "after:biomesoplenty;after:thermalfoundation;after:cofhworld;after:thermalexpansion;after:ic2;after:mekanism;after:forestry;after:immersiveengineering;after:quark;after:basemetals;after:thaumcraft;after:basemetals;after:chisel;after:tconstruct;")
 public class DivergentUnderground {
 	public static final String MODID = "divergentunderground";
-	public static final String VERSION = "0.62.1";
+	public static final String VERSION = "0.63.9";
 	public static final String NAME = "Divergent Underground";
 	public static SimpleNetworkWrapper wrapper;
 	
@@ -59,6 +60,7 @@ public class DivergentUnderground {
 		
 		GameRegistry.registerWorldGenerator(new StoneGenerator(), Integer.MAX_VALUE);
 		MinecraftForge.EVENT_BUS.register(new EventsHandler());
+
 		
 		for (ICompatibilityPlugin plugin : COMPAT_PLUGINS)
             plugin.preInit();
@@ -73,6 +75,9 @@ public class DivergentUnderground {
 
 		proxy.registerColorHandlers();
 		proxy.registerOreDicts();
+		if(ConfigDivergentUnderground.enableFossils){
+			  GameRegistry.registerWorldGenerator(new FeatureGenerator(), 3);
+		}
 		
         for (ICompatibilityPlugin plugin : COMPAT_PLUGINS)
             plugin.init();

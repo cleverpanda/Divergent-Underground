@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import panda.divergentunderground.DivergentUnderground;
 import panda.divergentunderground.init.ModItems;
 
 public class RockRegistry {

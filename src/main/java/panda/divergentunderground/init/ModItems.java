@@ -15,7 +15,7 @@ import panda.divergentunderground.common.items.ItemDU;
 public final class ModItems {
 	
 	private ModItems(){DivergentUnderground.logger.info("Registering Items");}
-	public static final String itemsDir= "divergentunderground:items/"; 
+	public static final String ITEMSDIR= "divergentunderground:items/"; 
 	
 	public static final Item ORE_GOLD = makeOre("gold");
 	public static final Item ORE_IRON = makeOre("iron");
@@ -36,28 +36,28 @@ public final class ModItems {
 	
 	//Use this if mod support is contained within that mod
 	public static Item makeExternalRock(String modid,String key){
-		return externalSimply(new ItemDU(itemsDir+"rock_"+modid+"_"+key), "rock_"+modid+"_"+key,modid);
+		return externalSimply(new ItemDU(ITEMSDIR+"rock_"+modid+"_"+key), "rock_"+modid+"_"+key,modid);
 	}
 	
 	public static Item makeRock(String modid,String key){
-		return simply(new ItemDU(itemsDir+"integration/"+modid+"/rock_"+modid+"_"+key), "rock_"+modid+"_"+key);
+		return simply(new ItemDU(ITEMSDIR+"integration/"+modid+"/rock_"+modid+"_"+key), "rock_"+modid+"_"+key);
 	}
 	
 	private static Item makeRock(String key){
-		return simply(new ItemDU(itemsDir+"rock_"+key), "rock_"+key);
+		return simply(new ItemDU(ITEMSDIR+"rock_"+key), "rock_"+key);
 	}
 	
 	//Use this if mod support is contained within that mod
 	public static Item makeExternalOre(String modid,String key){
-		return externalSimply(new ItemDU(itemsDir+"ore_"+modid+"_"+key), "ore_"+modid+"_"+key,modid);
+		return externalSimply(new ItemDU(ITEMSDIR+"ore_"+modid+"_"+key), "ore_"+modid+"_"+key,modid);
 	}
 	
 	public static Item makeOre(String modid,String key){
-		return simply(new ItemDU(itemsDir+"integration/"+modid+"/ore_"+modid+"_"+key), "ore_"+modid+"_"+key);
+		return simply(new ItemDU(ITEMSDIR+"integration/"+modid+"/ore_"+modid+"_"+key), "ore_"+modid+"_"+key);
 	}	
 	
 	private static Item makeOre(String key){
-		return simply(new ItemDU(itemsDir+"ore_"+key), "ore_"+key);
+		return simply(new ItemDU(ITEMSDIR+"ore_"+key), "ore_"+key);
 	}
 	
 	//Use this if mod support is contained within that mod
@@ -66,11 +66,11 @@ public final class ModItems {
 	}
 	
 	public static Item makeGem(String modid,String key){
-		return simply(new ItemDU(itemsDir+"integration/"+modid+"/gem_raw_"+modid+"_"+key), "gem_raw_"+modid+"_"+key);
+		return simply(new ItemDU(ITEMSDIR+"integration/"+modid+"/gem_raw_"+modid+"_"+key), "gem_raw_"+modid+"_"+key);
 	}	
 
 	private static Item makeGem(String key){
-		return simply(new ItemDU(itemsDir+"gem_raw_"+key), "gem_raw_"+key);
+		return simply(new ItemDU(ITEMSDIR+"gem_raw_"+key), "gem_raw_"+key);
 	}
 	
 	private static Item simply(Item item, String name) { 
@@ -112,6 +112,8 @@ public final class ModItems {
 		registerItemBlock(registry, ModBlocks.ANDESITE_COBBLE);
 		registerItemBlock(registry, ModBlocks.DIORITE_COBBLE);
 		registerItemBlock(registry, ModBlocks.GRANITE_COBBLE);
+		registerItemBlock(registry, ModBlocks.FOSSIL);
+		registerItemBlock(registry, ModBlocks.BOULDER);
 	}
 
 	public static void registerItemBlock(IForgeRegistry<Item> registry, Block block) {

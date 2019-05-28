@@ -120,4 +120,6 @@ tile.divergentunderground.tconstruct_hard_ardite_ore.name=Ardite Ore
 item.divergentunderground.ore_tconstruct_cobalt.name=Cobalt Ore
 item.divergentunderground.ore_tconstruct_ardite.name=Ardite Ore
 
+tile.divergentunderground.fossil.name=Fossil
+divergentunderground.subtitle.boulder_falling=Rock Crumbling
 

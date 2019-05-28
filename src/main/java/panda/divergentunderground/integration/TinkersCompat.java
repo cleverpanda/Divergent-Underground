@@ -58,7 +58,8 @@ public class TinkersCompat implements ICompatibilityPlugin{
 		HARD_COBALT = ModBlocks.makeHardBlock(blockOre.getStateFromMeta(BlockOre.OreTypes.COBALT.getMeta()),1,texturePath+"ore_cobalt",modid,"cobalt");
 		HARD_ARDITE = ModBlocks.makeHardBlock(blockOre.getStateFromMeta(BlockOre.OreTypes.ARDITE.getMeta()),1,texturePath+"ore_ardite",modid,"ardite");
 		
-		RockRegistry.addRock(blockOre,  ModItems.ROCK_NETHERRACK);	
+		RockRegistry.addRock(blockOre,0,  ModItems.ROCK_NETHERRACK);	
+		RockRegistry.addRock(blockOre,1,  ModItems.ROCK_NETHERRACK);
 
 		OreRegistry.addOre(blockOre,BlockOre.OreTypes.COBALT.getMeta(),  ORE_COBALT);	
 		OreRegistry.addOre(blockOre,BlockOre.OreTypes.ARDITE.getMeta(),  ORE_ARDITE);

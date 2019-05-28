@@ -15,11 +15,14 @@ public class ConfigDivergentUnderground {
 	public static boolean doUpdateSound;
 	public static boolean addVanillaOreRockSmelting;
 	public static boolean doGemDrops;
+	public static boolean enableFossils;
+	public static int fossilTries;
 	
 	public static int colorHardnessZero;
 	public static int colorHardnessOne;
 	public static int colorHardnessTwo;
 	public static int colorHardnessThree;
+	public static int boulderTries;
 	
 	
 	private static final String MINING ="mining";
@@ -42,7 +45,9 @@ public class ConfigDivergentUnderground {
 		colorHardnessTwo = Integer.decode(config.getString("ColorMultiplierHardnessTwo", MINING, "0xBFB6B3", ""));
 		colorHardnessThree = Integer.decode(config.getString("ColorMultiplierHardnessThree", MINING, "0xA59E9B", ""));
 		
-		
+		enableFossils = config.getBoolean("GenerateFossils", MINING, true, "Whether or not to generate fossils");
+		fossilTries = config.getInt("FossilTries", MINING, 2, 1, 32767, "How many times the fossil generator should try to generate. Increase if you don't see any"); 
+		boulderTries= config.getInt("BoulderTries", MINING, 2, 1, 32767, "How many times the boulder generator should try to generate. Increase if you don't see any"); 
 		if (config.hasChanged()) config.save();
 
 	}

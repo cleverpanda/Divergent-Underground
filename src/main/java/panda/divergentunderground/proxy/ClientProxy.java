@@ -51,6 +51,8 @@ public class ClientProxy extends CommonProxy {
 		registerBlockModel(ModBlocks.ANDESITE_COBBLE);
 		registerBlockModel(ModBlocks.DIORITE_COBBLE);
 		registerBlockModel(ModBlocks.GRANITE_COBBLE);
+		registerBlockModel(ModBlocks.FOSSIL);
+		registerBlockModel(ModBlocks.BOULDER);
 
 	}
 	
@@ -63,6 +65,14 @@ public class ClientProxy extends CommonProxy {
 	                return worldIn != null && pos != null ? BlockHardStone.getStoneColor(state) : 0xFFFFFFF;
 	            }
 	        }, ModBlocks.hardStones.toArray(new Block[ModBlocks.hardStones.size()]));		
+			
+			Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler(new IBlockColor()
+	        {
+	            public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex)
+	            {
+	                return worldIn != null && pos != null ? BlockHardStone.getStoneColor(state) : 0xFFFFFFF;
+	            }
+	        }, ModBlocks.BOULDER);		
 	}
 
 	public static void registerBlockModel(Block block) {

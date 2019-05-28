@@ -69,15 +69,18 @@ public final class ModelBakeEventCreator {
 			final ImmutableList<IBlockState> validStates = block.getBlockState().getValidStates();
 
 			String texture = ((BlockHardStone)block).textureLocation;
-			if (validStates.size() == 4) {
-				final String blockstate = "{\r\n  \"forge_marker\": 1,\r\n  \"defaults\": {\r\n    \"textures\": {\r\n      \"all\": \""+texture+"\"\r\n    }\r\n  },\r\n    \"variants\": {\r\n      \"hardness=0\":{ \"model\": \"divergentunderground:cube_all\" },              \r\n      \"hardness=1\":{ \"model\": \"divergentunderground:cube_all\" },              \r\n      \"hardness=2\":{ \"model\": \"divergentunderground:cube_all\" },\r\n      \"hardness=3\":{ \"model\": \"divergentunderground:cube_all\" }\r\n    }\r\n}\r\n";
-				blockstates.put(name, blockstate);
+			if(texture != ""){
+				if (validStates.size() == 4) {
+					final String blockstate = "{\r\n  \"forge_marker\": 1,\r\n  \"defaults\": {\r\n    \"textures\": {\r\n      \"all\": \""+texture+"\"\r\n    }\r\n  },\r\n    \"variants\": {\r\n      \"hardness=0\":{ \"model\": \"divergentunderground:cube_all\" },              \r\n      \"hardness=1\":{ \"model\": \"divergentunderground:cube_all\" },              \r\n      \"hardness=2\":{ \"model\": \"divergentunderground:cube_all\" },\r\n      \"hardness=3\":{ \"model\": \"divergentunderground:cube_all\" }\r\n    }\r\n}\r\n";
+					blockstates.put(name, blockstate);
 
-				final String item = "{\r\n    \"parent\": \"divergentunderground:block/cube_all\",\r\n    \"textures\": {\r\n        \"all\": \""+texture+"\"\r\n    }\r\n}\r\n";
-				items.put(name, item);
-			} else {
-				DivergentUnderground.logger.error("Something is wrong");
+					final String item = "{\r\n    \"parent\": \"divergentunderground:block/cube_all\",\r\n    \"textures\": {\r\n        \"all\": \""+texture+"\"\r\n    }\r\n}\r\n";
+					items.put(name, item);
+				} else {
+					DivergentUnderground.logger.error("Something is wrong");
+				}
 			}
+
 
 		});
 
@@ -97,8 +100,6 @@ public final class ModelBakeEventCreator {
 			}
 		});
 
-
-
 		getModEntries(ForgeRegistries.ITEMS).forEach(item -> {
 
 			if(!(item instanceof ItemDU)){
@@ -107,8 +108,10 @@ public final class ModelBakeEventCreator {
 			final String name = item.getRegistryName().getPath();
 
 			String texture = ((ItemDU)item).texture;
-			final String itemModel = "{\r\n    \"parent\": \"item/generated\",\r\n    \"textures\": {\r\n        \"layer0\": \""+texture+"\"\r\n    }\r\n}\r\n";
-			blockstates.put(name, itemModel);
+			if(texture != ""){
+			  final String itemModel = "{\r\n    \"parent\": \"item/generated\",\r\n    \"textures\": {\r\n        \"layer0\": \""+texture+"\"\r\n    }\r\n}\r\n";
+			  items.put(name, itemModel);
+			}
 		});
 
 

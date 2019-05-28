@@ -9,8 +9,8 @@ import panda.divergentunderground.init.ModItems;
 public class CommonProxy {
 
     public static void registerModels(ModelRegistryEvent event) {}
-    public void registerColorHandlers() {
-	}
+    
+    public void registerColorHandlers() {}
     
     public void registerOreDicts(){
     	OreDictionary.registerOre("toolChisel",new ItemStack(ModItems.CHISEL,1,OreDictionary.WILDCARD_VALUE));
@@ -51,6 +51,8 @@ public class CommonProxy {
     	
     	OreDictionary.registerOre("rockOreGold",ModItems.ORE_GOLD);
     	OreDictionary.registerOre("rockOreIron",ModItems.ORE_IRON);
+    	OreDictionary.registerOre("oreGold",ModItems.ORE_GOLD);
+    	OreDictionary.registerOre("oreIron",ModItems.ORE_IRON);
     	
     	OreDictionary.registerOre("uncutDiamond",ModItems.UNCUT_DIAMOND);
     	OreDictionary.registerOre("uncutEmerald",ModItems.UNCUT_EMERALD);

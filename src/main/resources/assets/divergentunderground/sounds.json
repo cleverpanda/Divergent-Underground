@@ -1,0 +1,7 @@
+{
+  "boulder_falling": {
+    "category": "block",
+    "sounds": ["divergentunderground:boulder_falling"],
+    "subtitle": "divergentunderground.subtitle.boulder_falling"
+  }
+}

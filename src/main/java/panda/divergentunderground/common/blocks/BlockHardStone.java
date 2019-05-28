@@ -25,6 +25,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -37,41 +38,49 @@ import panda.divergentunderground.registries.RockRegistry;
 
 public class BlockHardStone extends BlockOre {
 	
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		if(playerIn.getHeldItem(hand) != ItemStack.EMPTY && playerIn.getHeldItem(hand).getItem() == Items.NETHER_STAR){
-			worldIn.setBlockState(pos, state.cycleProperty(DEPTH));
-		}
-		
-		return alias.getBlock().onBlockActivated(worldIn, pos, alias, playerIn, hand, facing, hitX, hitY, hitZ);
-	}
-
 	public static final PropertyInteger DEPTH = PropertyInteger.create("hardness", 0,3);
 	
 	private IBlockState alias;
 	private int type;//0 = rock,1 = ore, 2= gem
 	public String textureLocation;
+	
 	public BlockHardStone(IBlockState replacement,int type,String texture) {
 		super();
 		this.setDefaultState(this.blockState.getBaseState().withProperty(DEPTH, 0));
 		alias = replacement;
 		this.type = type;
-        setHardness(alias.getBlock().getBlockHardness(alias, null, null));
         setResistance(10.0F);
         setSoundType(SoundType.STONE);
-        this.setHarvestLevel("pickaxe", alias.getBlock().getHarvestLevel(alias));
+        if(alias == Blocks.AIR.getDefaultState()){
+            setHardness(1.5F);
+            this.setHarvestLevel("pickaxe", 0);
+        }else{
+            setHardness(alias.getBlock().getBlockHardness(alias, null, null));
+            this.setHarvestLevel("pickaxe", alias.getBlock().getHarvestLevel(alias));
+        }
         this.textureLocation = texture;
+	}
+	
+	public BlockHardStone(int type,String texture) {
+		this(Blocks.AIR.getDefaultState(), type, texture);
 	}
 	
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,EntityPlayer player) {
-
 		return new ItemStack(this);
 	}
 	
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+		if(playerIn.getHeldItem(hand) != ItemStack.EMPTY && playerIn.getHeldItem(hand).getItem() == Items.NETHER_STAR){
+			worldIn.setBlockState(pos, state.cycleProperty(DEPTH));
+		}
+
+		return alias.getBlock().onBlockActivated(worldIn, pos, alias, playerIn, hand, facing, hitX, hitY, hitZ);
+	}
 	
 	public boolean doStoneReplace(IBlockState oldstate,World world,BlockPos pos, int y, int y1){
-		if(oldstate != alias){
+		if(alias == Blocks.AIR.getDefaultState() || oldstate != alias){
 			return false;
 		}
     	IBlockState newBlockState = this.getStateFromDepth(y,y1,isSurroundedByCompressingBlocks(world, pos, true));
@@ -94,16 +103,8 @@ public class BlockHardStone extends BlockOre {
         	return ConfigDivergentUnderground.colorHardnessThree;
         default:
         	return ConfigDivergentUnderground.colorHardnessZero;
-        }
-        
+        }  
     }
-	
-	public IBlockState tryMatch(IBlockState state){
-		if(!state.equals(alias)){
-			return null;
-		}
-		return alias;
-	}
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta)
@@ -124,13 +125,41 @@ public class BlockHardStone extends BlockOre {
 	@Override
 	public int quantityDropped(Random random)
     {
-			int count = 2 + random.nextInt(3);
-			return count < 5? count : 4;
+		int count = 2 + random.nextInt(3);
+		return count < 5? count : 4;
     }
+	
 	@Override
-    public int getExpDrop(IBlockState state, net.minecraft.world.IBlockAccess world, BlockPos pos, int fortune)
-    {if(this.type > 0){return 0;}
-		return alias.getBlock().getExpDrop(alias, world, pos, fortune);
+    public int getExpDrop(IBlockState state, IBlockAccess world, BlockPos pos, int fortune)
+    {
+		if(this.type == 0 || alias == null){return 0;}
+		Random rand = world instanceof World ? ((World)world).rand : new Random();
+		int i = 0;
+		Block b = alias.getBlock();
+        if (b == Blocks.COAL_ORE)
+        {
+            i = MathHelper.getInt(rand, 0, 2);
+        }
+        else if (b == Blocks.DIAMOND_ORE)
+        {
+            i = MathHelper.getInt(rand, 3, 7);
+        }
+        else if (b == Blocks.EMERALD_ORE)
+        {
+            i = MathHelper.getInt(rand, 3, 7);
+        }
+        else if (b == Blocks.LAPIS_ORE)
+        {
+            i = MathHelper.getInt(rand, 2, 5);
+        }
+        else if (b == Blocks.QUARTZ_ORE)
+        {
+            i = MathHelper.getInt(rand, 2, 5);
+        }else{
+        	i = alias.getBlock().getExpDrop(alias, world, pos, fortune);
+        }
+
+        return i;
     }
 	
 	
@@ -138,7 +167,6 @@ public class BlockHardStone extends BlockOre {
     @Override
     public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
     {
-    	
     	if(alias.getBlock() == Blocks.REDSTONE_ORE){
     		this.spawnParticles(worldIn, pos);
             return;
@@ -159,45 +187,44 @@ public class BlockHardStone extends BlockOre {
     private void spawnParticles(World worldIn, BlockPos pos)
     {
         Random random = worldIn.rand;
-        double d0 = 0.0625D;
 
         for (int i = 0; i < 6; ++i)
         {
-            double d1 = (double)((float)pos.getX() + random.nextFloat());
-            double d2 = (double)((float)pos.getY() + random.nextFloat());
-            double d3 = (double)((float)pos.getZ() + random.nextFloat());
+            double d1 = pos.getX() + random.nextFloat();
+            double d2 = pos.getY() + random.nextFloat();
+            double d3 = pos.getZ() + random.nextFloat();
 
             if (i == 0 && !worldIn.getBlockState(pos.up()).isOpaqueCube())
             {
-                d2 = (double)pos.getY() + 0.0625D + 1.0D;
+                d2 = pos.getY() + 0.0625D + 1.0D;
             }
 
             if (i == 1 && !worldIn.getBlockState(pos.down()).isOpaqueCube())
             {
-                d2 = (double)pos.getY() - 0.0625D;
+                d2 = pos.getY() - 0.0625D;
             }
 
             if (i == 2 && !worldIn.getBlockState(pos.south()).isOpaqueCube())
             {
-                d3 = (double)pos.getZ() + 0.0625D + 1.0D;
+                d3 = pos.getZ() + 0.0625D + 1.0D;
             }
 
             if (i == 3 && !worldIn.getBlockState(pos.north()).isOpaqueCube())
             {
-                d3 = (double)pos.getZ() - 0.0625D;
+                d3 = pos.getZ() - 0.0625D;
             }
 
             if (i == 4 && !worldIn.getBlockState(pos.east()).isOpaqueCube())
             {
-                d1 = (double)pos.getX() + 0.0625D + 1.0D;
+                d1 = pos.getX() + 0.0625D + 1.0D;
             }
 
             if (i == 5 && !worldIn.getBlockState(pos.west()).isOpaqueCube())
             {
-                d1 = (double)pos.getX() - 0.0625D;
+                d1 = pos.getX() - 0.0625D;
             }
 
-            if (d1 < (double)pos.getX() || d1 > (double)(pos.getX() + 1) || d2 < 0.0D || d2 > (double)(pos.getY() + 1) || d3 < (double)pos.getZ() || d3 > (double)(pos.getZ() + 1))
+            if (d1 < pos.getX() || d1 > pos.getX() + 1 || d2 < 0.0D || d2 > pos.getY() + 1 || d3 < pos.getZ() || d3 > pos.getZ() + 1)
             {
                 worldIn.spawnParticle(EnumParticleTypes.REDSTONE, d1, d2, d3, 0.0D, 0.0D, 0.0D);
             }
@@ -207,6 +234,7 @@ public class BlockHardStone extends BlockOre {
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn)
     {
+
     	if(alias.getBlock() == Blocks.REDSTONE_ORE){
     		this.spawnParticles(worldIn, pos);
             return;
@@ -254,7 +282,6 @@ public class BlockHardStone extends BlockOre {
 				int count = rand.nextInt(fortune + 2) - 1;
 				if(GemRegistry.hasGems(new Pair(alias.getBlock(),alias.getBlock().getMetaFromState(alias)))){
 				ItemStack gem = GemRegistry.getGems(new Pair(alias.getBlock(),alias.getBlock().getMetaFromState(alias)));
-				//DivergentUnderground.logger.info(gem);
 				if (count < 0)
 				{
 					count = 0;
@@ -298,6 +325,9 @@ public class BlockHardStone extends BlockOre {
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
+    	if(alias == Blocks.AIR.getDefaultState()){
+    		return Items.AIR;
+    	}
         return RockRegistry.getRocks(new Pair(alias.getBlock(),alias.getBlock().getMetaFromState(alias))).getItem();
     }
 
@@ -316,7 +346,6 @@ public class BlockHardStone extends BlockOre {
 	@Override
     protected ItemStack getSilkTouchDrop(IBlockState state)
     {
-		
         Item item = Item.getItemFromBlock(alias.getBlock());
 
         if (item == Items.AIR)
