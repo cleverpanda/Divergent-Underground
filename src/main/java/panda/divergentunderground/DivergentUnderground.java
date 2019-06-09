@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -19,7 +20,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
+import panda.divergentunderground.common.blocks.BlockHardStone;
 import panda.divergentunderground.common.eventhandler.EventsHandler;
 import panda.divergentunderground.common.world.FeatureGenerator;
 import panda.divergentunderground.common.world.StoneGenerator;
@@ -38,7 +42,7 @@ import net.minecraftforge.common.config.Configuration;
 dependencies = "after:biomesoplenty;after:thermalfoundation;after:cofhworld;after:thermalexpansion;after:ic2;after:mekanism;after:forestry;after:immersiveengineering;after:quark;after:basemetals;after:thaumcraft;after:basemetals;after:chisel;after:tconstruct;")
 public class DivergentUnderground {
 	public static final String MODID = "divergentunderground";
-	public static final String VERSION = "0.63.9";
+	public static final String VERSION = "0.64.0";
 	public static final String NAME = "Divergent Underground";
 	public static SimpleNetworkWrapper wrapper;
 	
@@ -75,9 +79,9 @@ public class DivergentUnderground {
 
 		proxy.registerColorHandlers();
 		proxy.registerOreDicts();
-		if(ConfigDivergentUnderground.enableFossils){
-			  GameRegistry.registerWorldGenerator(new FeatureGenerator(), 3);
-		}
+		
+		GameRegistry.registerWorldGenerator(new FeatureGenerator(), 3);
+		
 		
         for (ICompatibilityPlugin plugin : COMPAT_PLUGINS)
             plugin.init();
@@ -88,6 +92,19 @@ public class DivergentUnderground {
 		public ItemStack createIcon() {
 			return new ItemStack(ModItems.ORE_IRON);
 		}
+		
+		@Override
+		@SideOnly(Side.CLIENT)
+		//Just for you, CellMembrane
+	    public void displayAllRelevantItems(NonNullList<ItemStack> list)
+	    {
+	        for (Item item : Item.REGISTRY)
+	        {
+	        	if(!(Block.getBlockFromItem(item) instanceof BlockHardStone && ConfigDivergentUnderground.hideHardVariants)){
+	        		item.getSubItems(this, list);
+	        	}
+	        }
+	    }
 	};
 	
 	public static void doDicts(String type,Item ore, Block block){

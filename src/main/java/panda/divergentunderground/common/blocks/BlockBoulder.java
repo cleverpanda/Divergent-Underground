@@ -60,8 +60,12 @@ public class BlockBoulder extends BlockFalling {
         			 worldIn.playSound(null, pos.getX(), pos.getY(), pos.getZ(), ModSounds.BOULDER_FALLING, SoundCategory.BLOCKS, 1.0F, 1.2F);
         			 playedSound = true;
         		 }
-        		 worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
-        		 elapsed++;
+        		 //worldIn.isChunkGeneratedAt(pos.getX(), pos.getZ())
+        		 if(worldIn.isAnyPlayerWithinRangeAt(pos.getX(), pos.getY(), pos.getZ(), 32)){
+            		 worldIn.scheduleUpdate(pos, this, this.tickRate(worldIn));
+            		 elapsed++;        			 
+        		 }
+
         		 //DivergentUnderground.logger.info(elapsed);
         		 if(elapsed >= getWaitTimeForDepth(state)){
         			 playedSound = false;

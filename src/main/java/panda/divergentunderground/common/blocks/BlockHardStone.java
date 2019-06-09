@@ -85,7 +85,7 @@ public class BlockHardStone extends BlockOre {
 		}
     	IBlockState newBlockState = this.getStateFromDepth(y,y1,isSurroundedByCompressingBlocks(world, pos, true));
         if(newBlockState != null){
-        	world.setBlockState(pos, newBlockState, 20 /*no block update, no observer checks*/);
+        	world.setBlockState(pos, newBlockState, 2 /*no block update, no observer checks*/);
         	return true;
         }
         return false;

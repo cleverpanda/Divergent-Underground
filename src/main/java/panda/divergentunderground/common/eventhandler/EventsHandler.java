@@ -30,6 +30,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.oredict.OreDictionary;
 import panda.divergentunderground.ConfigDivergentUnderground;
 import panda.divergentunderground.common.blocks.BlockHardStone;
+import panda.divergentunderground.common.items.ItemDU;
 import panda.divergentunderground.init.ModBlocks;
 import panda.divergentunderground.registries.GemRegistry;
 import panda.divergentunderground.registries.OreRegistry;
@@ -217,11 +218,19 @@ public class EventsHandler {
 		public void onCraft(ItemCraftedEvent event) {
 			World world = event.player.world;
 			ItemStack itemstack = event.crafting;
-			if(world.isRemote) return;
+			if(world.isRemote && ConfigDivergentUnderground.doChiselXP) return;
+			boolean hasUncutGem = false;
 			for(String name : OreDictionary.getOreNames()){
         		if(!name.startsWith("gem")) continue;
+        		for(int j=0; j < event.craftMatrix.getSizeInventory(); j++){
+        			if(event.craftMatrix.getStackInSlot(j).getItem() instanceof ItemDU){
+        				hasUncutGem = true;
+        				break;
+        			}
+        		}
+        		
         		for(ItemStack orestack : OreDictionary.getOres(name)){
-        			if(orestack.getItem() == itemstack.getItem()){
+        			if(hasUncutGem && orestack.getItem() == itemstack.getItem()){
         				
         				
         				int amount = world.rand.nextInt(2)+1;

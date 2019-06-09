@@ -23,7 +23,9 @@ public class ConfigDivergentUnderground {
 	public static int colorHardnessTwo;
 	public static int colorHardnessThree;
 	public static int boulderTries;
-	
+	protected static boolean hideHardVariants;
+	public static boolean enableBoulders;
+	public static boolean doChiselXP;
 	
 	private static final String MINING ="mining";
 	private ConfigDivergentUnderground(){DivergentUnderground.logger.info("Loading Config");}
@@ -40,14 +42,18 @@ public class ConfigDivergentUnderground {
 		doUpdateSound  = config.getBoolean("DoUpdateSound", MINING, true, "Whether or not to play a sound when blocks are compressed or decompressed");
 		addVanillaOreRockSmelting = config.getBoolean("addVanillaOreRockSmelting", MINING, true, "Whether or not to add smelting recipes for iron and gold rocks");
 		doGemDrops = config.getBoolean("DoUncutGemDrops", MINING, true, "Enable to drop uncut gems");
+		doChiselXP = config.getBoolean("doChiselXP", MINING, true, "Disable to stop xp from gem cutting");
 		colorHardnessZero = Integer.decode(config.getString("ColorMultiplierHardnessZero", MINING, "0xFFFFFF", ""));
 		colorHardnessOne = Integer.decode(config.getString("ColorMultiplierHardnessOne", MINING, "0xE5DBD7", ""));
 		colorHardnessTwo = Integer.decode(config.getString("ColorMultiplierHardnessTwo", MINING, "0xBFB6B3", ""));
 		colorHardnessThree = Integer.decode(config.getString("ColorMultiplierHardnessThree", MINING, "0xA59E9B", ""));
 		
+		enableBoulders = config.getBoolean("GenerateBoulders", MINING, true, "Whether or not to generate boulders");
 		enableFossils = config.getBoolean("GenerateFossils", MINING, true, "Whether or not to generate fossils");
 		fossilTries = config.getInt("FossilTries", MINING, 2, 1, 32767, "How many times the fossil generator should try to generate. Increase if you don't see any"); 
 		boulderTries= config.getInt("BoulderTries", MINING, 2, 1, 32767, "How many times the boulder generator should try to generate. Increase if you don't see any"); 
+		
+		hideHardVariants = config.getBoolean("hideHardVariants", MINING, true, "Will hide hard stone block variants from the creative inventory, if enabled ");
 		if (config.hasChanged()) config.save();
 
 	}
